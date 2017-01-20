@@ -1,0 +1,270 @@
+.logo-image a:hover img { transition: none; -moz-transition: none; -webkit-transform: none; }
+
+.megamenuli ul li { list-style: none !important; margin-left: 0 !important;}
+
+.megamenuli ul li.active a {color: #3498db !important; font-weight:bold !important;}
+
+.megamenuli{ width:20% !important; padding-left: 25px; padding-right: 25px;}
+
+.megamenuli h3 {font-size:18px !important;}
+
+.megamenuli .nav li {color: #3498db !important;}
+
+span.dropdown-toggle.separator {border-radius: 0;color: #ffffff;font-size: 13px;padding: 21px 0;outline: none;text-transform: uppercase;}
+
+.modulecolorfind {color:#A8CC49 !important;}
+.modulecolordata {color:#006699 !important;}
+.modulecolortranslate {color:#DE362F !important;}
+.modulecolorevaluate {color:#009933 !important;}
+.modulecolorpostedit {color:#CC3333 !important;}
+
+iframe#blockrandom.wrapper{
+    border: 0px;
+}
+
+.media img {
+    margin-bottom: 8px;
+}
+
+.row-feature-border-data{
+    background: whitesmoke;
+}
+
+.row-feature-border-find{
+    background: whitesmoke;
+}
+
+.row-feature-border-translate{
+
+}
+
+.row-feature-border-evaluate{
+    background: whitesmoke;
+}
+
+.row-feature-border-postedit{
+
+}
+
+#ja-testimonial {
+    font-size:18px;
+}
+
+h3.row-feature-title {
+    font-size:36px;
+}
+
+.article-header .article-title {
+    margin: 0 0 0 0;
+}
+
+/* Menu titles for Services VS*/
+/* Find */
+li.item-263.current.active a {
+    font-weight: bold;
+}
+
+li.item-263 a {
+    color: #A8CC49 !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* News */
+li.item-954.current.active a {
+    font-weight: bold;
+}
+
+li.item-954 a {
+    color: #CC3399 !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* Translate */
+li.item-311.current.active a {
+    font-weight: bold;
+}
+
+li.item-311 a {
+    color: #DE362F !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* QD */
+li.item-401.current.active a {
+    font-weight: bold;
+}
+
+li.item-401 a {
+    color: #009933 !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* Post-edit */
+li.item-673.current.active a {
+    font-weight: bold;
+}
+
+li.item-673 a {
+    color: #DD972E  !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* Data */
+li.item-658.current.active a {
+    font-weight: bold;
+}
+
+li.item-658 a {
+    color: #006699  !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* Academy */
+li.item-730.current.active a {
+    font-weight: bold;
+}
+
+li.item-730 a {
+    color: #cc3333  !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* Events */
+li.item-293.current.active a {
+    font-weight: bold;
+}
+
+li.item-293 a {
+    color: #009933  !important;
+    font-size: 18px;
+    text-transform: uppercase !important;
+}
+
+/* RSMembership styling VS */
+div.rs-page-body {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 2px 1px rgba(0,0,0,.25);
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,.25);
+    background-color: #fff;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    padding: 30px 30px 48px;
+    height: 100%;
+}
+
+/* Service menuy style VS */
+.service_style{
+    font-size:18px;
+    font-weight:bold
+}
+
+.service_padding{
+    padding-left:30px;
+}
+
+.modulecolorfind {color:#A8CC49 !important;}
+.modulecolordata {color:#006699 !important;}
+.modulecolortranslate {color:#DE362F !important;}
+.modulecolorevaluate {color:#009933 !important;}
+.modulecolorpostedit {color:#CC3333 !important}
+
+.services_group a:link {
+    text-decoration: none;
+}
+
+/**/
+div.mod_title_override .module-title {
+    background: transparent;
+    color: #006699;
+    font-size: 17px;
+    /* font-weight: bold; */
+    font-weight: 600;
+    margin: 0 0 14px 0;
+    padding: 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+}
+
+/*reducing the extra white space on top on the home page */
+div#Mod275 {
+    padding-top: 5px;
+}
+
+div#Mod126 {
+    padding-top: 5px;
+}
+
+/* footer soc buttons*/
+.addthis_toolbox.addthis_32x32_style.addthis_default_style {
+    min-width: 0px;
+}
+/* main navigation to add more items on top */
+.head-right + .t3-mainnav {
+    padding-right: 166px;
+}
+
+
+@media (max-width: 1000px) {
+    .head-right {
+        padding: 10px 0;
+    }
+}
+
+/* for head search */
+.head-search .dropdown-menu {
+    min-width: 248px !important;
+}
+
+
+img.logo-img-sm {
+    padding-top: 16px;
+}
+
+.gsc-input-box {
+    height: 30px !important;
+}
+
+td.gsc-search-button, td.gsc-input {
+    border-top: none !important;
+}
+
+.cse .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2 {
+    width: 13px;
+    height: 13px !important;
+    padding: 11px 27px !important;
+    min-width: 13px;
+    margin-top: 8px !important;
+}
+
+input#gsc-i-id2 {
+    height: 2.25em !important;
+}
+
+/* search results */
+td.gsc-result-info-container {
+    border-top: none;
+}
+
+td.gsc-orderby-container {
+    border-top: none;
+}
+
+td.gsc-table-cell-snippet-close {
+    border-top: none;
+}
+
+td.gsc-table-cell-thumbnail.gsc-thumbnail {
+    border-top: none;
+}

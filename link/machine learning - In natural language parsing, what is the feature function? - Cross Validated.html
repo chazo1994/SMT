@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>machine learning - In natural language parsing, what is the feature function? - Cross Validated</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stats/img/favicon.ico?v=573163e34adf">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stats/img/apple-touch-icon.png?v=8698dcfb5c72">
+    <link rel="search" type="application/opensearchdescription+xml" title="Cross Validated" href="http://stats.stackexchange.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@StackStats">
+    <meta name="twitter:domain" content="stats.stackexchange.com">
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stats/img/apple-touch-icon@2.png?v=344f57aa10cc">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="In natural language parsing, what is the feature function?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I'm working in the area of natural language processing, to be specific I'm reviewing the parsers that take advantage of data-mining techniques. 
+
+I've read an introduction to natural language proce...">
+    <meta property="og:url" content="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function">
+    <link rel="canonical" href="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function">
+
+    
+    
+    <script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/ados.js" async="" type="text/javascript"></script><script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/quant.js" async=""></script><script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/beacon.js" async=""></script><script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/analytics.js" async=""></script><script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/ados_002.js" async="" type="text/javascript"></script><script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/jquery.js"></script>
+    <script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'In natural language parsing, what is the feature function?'" href="http://stats.stackexchange.com/feeds/question/15227">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:15227});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('65', '15227');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', false); });
+
+            });
+        </script>
+
+                <script type="text/x-mathjax-config;executed=true">
+                    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+                                        tex2jax: { inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+                                        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+                                        messageStyle: "none"
+                });
+                </script>        
+            <script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/MathJax.js"></script>  
+
+    <script>
+        StackExchange.ready(function () {
+                        StackExchange.realtime.init('wss://qa.sockets.stackexchange.com,ws://qa.sockets.stackexchange.com');
+            StackExchange.realtime.subscribeToReputationNotifications('65');
+                StackExchange.realtime.subscribeToTopBarNotifications('65');
+        });
+    </script>
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1484562890,"routeName":"Questions/Show","site":{"name":"Cross Validated","description":"Q&A for people interested in statistics, machine learning, data analysis, data mining, and data visualization","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdsB7sSAAAAAAzjgEF_Hd8vXv-C42sa_KyofaGR","recaptchaAudioLang":"en","enableNewTagCreationWarning":false,"insertSpaceAfterNameTabCompletion":false,"id":65,"enableInsertDocLinkDialog":false,"enableSocialMediaInSharePopup":true},"user":{"fkey":"c4ad2f49e1a6b56a0691c39292fe78b6","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"ab":{"question_show_tweaks":{"v":"altern_unansw_cta","g":1},"question_page_hero":{"v":"delay_hero_3","g":2},"simplified_signup_form":{"v":"multi_check_email_copy","g":7},"mobile_signup_link":{"v":"simplified_signup_form:rdn","g":2}}},"realtime":{"newest":true,"active":true,"tagged":true,"staleDisconnectIntervalInHours":0,"workerIframeDomain":"https://cdn.sstatic.net"},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableImgurHttps":true},"comments":{},"userProfile":{},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"analytics":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000},"snippets":{"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"28f8bb7b8d3d","js/moderator.en.js":"1680bc66c75f","js/full-anon.en.js":"6e89d7eb47f5","js/full.en.js":"0468bf2137a8","js/wmd.en.js":"4402c5fe3e65","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"2c9292b04714","js/help.en.js":"dbd4f489eff2","js/tageditor.en.js":"9c6df10dabc4","js/tageditornew.en.js":"307fa1b4cb48","js/inline-tag-editing.en.js":"2ddfa79492e7","js/revisions.en.js":"1216513bd748","js/review.en.js":"4b02fdff1573","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"7a9af70ac5e7","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"d8f08f20b49f","js/keyboard-shortcuts.en.js":"e14e12e588f5","js/external-editor.en.js":"dec8b7cab79e","js/mathjax-editing.en.js":"acaea3045689"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+<script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/full-anon.js" async=""></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/post-validation.js" async=""></script><script src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/external-editor.js" async=""></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body class="question-page new-topbar"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div style="display: none;" id="MathJax_Message"></div>
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="http://stats.stackexchange.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="http://stats.blogoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+                    <a href="http://chat.stackexchange.com/?tab=site&amp;host=stats.stackexchange.com" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+
+
+
+    <a href="http://stats.stackexchange.com/" class="current-site-link site-link js-gps-track" data-id="65" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stats" title="Cross Validated"></div>
+        Cross Validated
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+
+
+
+    <a href="http://meta.stats.stackexchange.com/" class="site-link js-gps-track" data-id="66" data-gps-track="
+            site.switch({ target_site:66, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-statsmeta" title="Cross Validated Meta"></div>
+        Cross Validated Meta
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stats.stackexchange.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstats.stackexchange.com%2fquestions%2f15227%2fin-natural-language-parsing-what-is-the-feature-function" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stats.stackexchange.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstats.stackexchange.com%2fquestions%2f15227%2fin-natural-language-parsing-what-is-the-feature-function" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="http://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+        </div>
+
+        <div class="network-items">
+                <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 163 Stack Exchange sites">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#" class="topbar-icon icon-achievements yes-hover js-achievements-button" data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stats.stackexchange.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fstats.stackexchange.com%2fquestions%2f15227%2fin-natural-language-parsing-what-is-the-feature-function" class="login-link" rel="nofollow">sign up</a>
+                                <a href="https://stats.stackexchange.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fstats.stackexchange.com%2fquestions%2f15227%2fin-natural-language-parsing-what-is-the-feature-function" class="login-link" rel="nofollow">log in</a>
+
+                            <a href="http://stats.stackexchange.com/tour">tour</a>
+        <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stats.stackexchange.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stats.stackexchange.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.stats.stackexchange.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                        <input name="q" placeholder="Search Q&amp;A" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stats.stackexchange.com/">
+                    Cross Validated
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                            <li class="youarehere">
+        <a id="nav-questions" href="http://stats.stackexchange.com/questions" class="js-gps-track" data-gps-track="top_nav.click({is_current:true, location:3, destination:1})">
+        Questions
+        </a>
+    </li>
+
+                                                    <li>
+        <a id="nav-tags" href="http://stats.stackexchange.com/tags" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:2})">
+        Tags
+        </a>
+    </li>
+
+                            <li>
+        <a id="nav-users" href="http://stats.stackexchange.com/users" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:3})">
+        Users
+        </a>
+    </li>
+
+                            <li>
+        <a id="nav-badges" href="http://stats.stackexchange.com/help/badges" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:4})">
+        Badges
+        </a>
+    </li>
+
+    <li>
+        <a id="nav-unanswered" href="http://stats.stackexchange.com/unanswered" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:5})">
+        Unanswered
+        </a>
+    </li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stats.stackexchange.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stats/img/apple-touch-icon.png?v=8698dcfb5c72">
+			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function" class="question-hyperlink">In natural language parsing, what is the feature function?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="15227" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,0,"adzerk1435931457",4).enableDynamicSiteSelection().setZone(29); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1435931457"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="15227" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I'm working in the area of natural language processing, to be 
+specific I'm reviewing the parsers that take advantage of data-mining 
+techniques. </p>
+
+<p>I've read an introduction to natural language processing, specifically the <a href="http://www.ldc.upenn.edu/acl/J/J96/J96-1002.pdf" rel="nofollow">maximum entropy approach</a> by Della Pietra and others. In that paper, the authors explain that <strong>features</strong>
+ are indicator functions that take into account certain aspects of the 
+text. The problem is that this aspects affect the maximum entropy 
+function.</p>
+
+<p>In the case of parsing, I have problems understanding the concept of features. For parsing one must have:</p>
+
+<ol>
+<li>Two sets, <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-1-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.816em; display: inline-block;" id="MathJax-Span-1" class="math"><span style="display: inline-block; position: relative; width: 0.65em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.732em, 1000.65em, 2.71em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-2" class="mrow"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-3" class="mi">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.044em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.067em; border-left: 0px solid; width: 0px; height: 0.937em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>X</mi></math></span></span><script id="MathJax-Element-1" type="math/tex">X</script> for the sentences and <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-2-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.762em; display: inline-block;" id="MathJax-Span-4" class="math"><span style="display: inline-block; position: relative; width: 0.596em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.732em, 1000.6em, 2.71em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-5" class="mrow"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-6" class="mi">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.077em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.067em; border-left: 0px solid; width: 0px; height: 0.937em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Y</mi></math></span></span><script id="MathJax-Element-2" type="math/tex">Y</script> for the parses</li>
+<li>For each sentence <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2208;&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-3-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 2.93em; display: inline-block;" id="MathJax-Span-7" class="math"><span style="display: inline-block; position: relative; width: 2.385em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.732em, 1002.39em, 2.737em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-8" class="mrow"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-9" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="font-family: STIXGeneral; padding-left: 0.313em;" id="MathJax-Span-10" class="mo">∈</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.313em;" id="MathJax-Span-11" class="mi">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.044em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.1em; border-left: 0px solid; width: 0px; height: 0.97em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>∈</mo><mi>X</mi></math></span></span><script id="MathJax-Element-3" type="math/tex">x \in X</script>, one must have the N-best list of candidate parses; denoted <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;G&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;&amp;#x2282;&lt;/mo&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-4-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 6.29em; display: inline-block;" id="MathJax-Span-12" class="math"><span style="display: inline-block; position: relative; width: 5.095em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.709em, 1005.09em, 2.887em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-13" class="mrow"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-14" class="mi">G</span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-15" class="mi">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.023em;"></span></span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-16" class="mi">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.06em;"></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-17" class="mo">(</span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-18" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-19" class="mo">)</span><span style="font-family: STIXGeneral; padding-left: 0.313em;" id="MathJax-Span-20" class="mo">⊂</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.313em;" id="MathJax-Span-21" class="mi">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.077em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.284em; border-left: 0px solid; width: 0px; height: 1.183em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>G</mi><mi>E</mi><mi>N</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>⊂</mo><mi>Y</mi></math></span></span><script id="MathJax-Element-4" type="math/tex">GEN(x) \subset Y</script>.</li>
+<li>Training samples <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-5-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 3.146em; display: inline-block;" id="MathJax-Span-22" class="math"><span style="display: inline-block; position: relative; width: 2.547em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.709em, 1002.5em, 3.006em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-23" class="mrow"><span style="font-family: STIXGeneral;" id="MathJax-Span-24" class="mo">(</span><span id="MathJax-Span-25" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-26" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-27" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-28" class="mo">,</span><span style="padding-left: 0.188em;" id="MathJax-Span-29" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.43em, 4.379em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-30" class="mi">y</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-31" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-32" class="mo">)</span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.431em; border-left: 0px solid; width: 0px; height: 1.329em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><msub><mi>y</mi><mi>j</mi></msub><mo stretchy="false">)</mo></math></span></span><script id="MathJax-Element-5" type="math/tex">(x_j,y_j)</script>. The <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-6-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.87em; display: inline-block;" id="MathJax-Span-33" class="math"><span style="display: inline-block; position: relative; width: 0.705em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.456em, 1000.71em, 2.519em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-34" class="mrow"><span id="MathJax-Span-35" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-36" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-37" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.431em; border-left: 0px solid; width: 0px; height: 1.04em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mi>j</mi></msub></math></span></span><script id="MathJax-Element-6" type="math/tex">x_j</script> are sentences and the <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-7-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.87em; display: inline-block;" id="MathJax-Span-38" class="math"><span style="display: inline-block; position: relative; width: 0.705em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.456em, 1000.71em, 2.519em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-39" class="mrow"><span id="MathJax-Span-40" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.43em, 4.379em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-41" class="mi">y</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-42" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.431em; border-left: 0px solid; width: 0px; height: 1.04em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>y</mi><mi>j</mi></msub></math></span></span><script id="MathJax-Element-7" type="math/tex">y_j</script> are parses.</li>
+<li>And a <strong>feature</strong> mapping <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x03A6;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-8-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 3.905em; display: inline-block;" id="MathJax-Span-43" class="math"><span style="display: inline-block; position: relative; width: 3.144em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.709em, 1003.1em, 2.887em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-44" class="mrow"><span style="font-family: STIXGeneral;" id="MathJax-Span-45" class="mi">Φ</span><span style="font-family: STIXGeneral;" id="MathJax-Span-46" class="mo">(</span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-47" class="mi">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.044em;"></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-48" class="mo">,</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.188em;" id="MathJax-Span-49" class="mi">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.077em;"></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-50" class="mo">)</span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.284em; border-left: 0px solid; width: 0px; height: 1.183em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Φ</mi><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>Y</mi><mo stretchy="false">)</mo></math></span></span><script id="MathJax-Element-8" type="math/tex">\Phi(X,Y)</script> that maps each pair (x,y) to a vector of feature values.</li>
+</ol>
+
+<p>The problem of parsing will consist of finding the weight vector such that the following expression is minimized</p>
+
+<p><span style="color: inherit; display: none;" class="MathJax_Preview"></span><div style="text-align: center;" class="MathJax_Display"><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mo&gt;&amp;#x2211;&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03BB;&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;msub&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;" style="text-align: center; position: relative;" tabindex="0" id="MathJax-Element-9-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 14.474em; display: inline-block;" id="MathJax-Span-51" class="math"><span style="display: inline-block; position: relative; width: 11.762em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.843em, 1011.76em, 3.619em, -1000em); top: -2.981em; left: 0em;"><span id="MathJax-Span-52" class="mrow"><span style="font-family: STIXGeneral;" id="MathJax-Span-53" class="mo">−</span><span style="font-family: STIXSizeOneSym; vertical-align: -0.524em; padding-left: 0.188em;" id="MathJax-Span-54" class="mo">∑</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.188em;" id="MathJax-Span-55" class="mi">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-56" class="mi">o</span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-57" class="mi">g</span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-58" class="mi">P</span><span style="font-family: STIXGeneral;" id="MathJax-Span-59" class="mo">(</span><span id="MathJax-Span-60" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.43em, 4.379em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-61" class="mi">y</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-62" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span id="MathJax-Span-63" class="texatom"><span id="MathJax-Span-64" class="mrow"><span style="font-family: STIXVariants;" id="MathJax-Span-65" class="mo">|</span></span></span><span id="MathJax-Span-66" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-67" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-68" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-69" class="mo">,</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.188em;" id="MathJax-Span-70" class="mi">w</span><span style="font-family: STIXGeneral;" id="MathJax-Span-71" class="mo">)</span><span style="font-family: STIXGeneral; padding-left: 0.25em;" id="MathJax-Span-72" class="mo">+</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.25em;" id="MathJax-Span-73" class="mi">λ</span><span id="MathJax-Span-74" class="texatom"><span id="MathJax-Span-75" class="mrow"><span style="font-family: STIXVariants;" id="MathJax-Span-76" class="mo">|</span></span></span><span id="MathJax-Span-77" class="texatom"><span id="MathJax-Span-78" class="mrow"><span style="font-family: STIXVariants;" id="MathJax-Span-79" class="mo">|</span></span></span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-80" class="mi">w</span><span id="MathJax-Span-81" class="texatom"><span id="MathJax-Span-82" class="mrow"><span style="font-family: STIXVariants;" id="MathJax-Span-83" class="mo">|</span></span></span><span id="MathJax-Span-84" class="msubsup"><span style="display: inline-block; position: relative; width: 0.749em; height: 0px;"><span style="position: absolute; clip: rect(3.158em, 1000.19em, 4.362em, -1000em); top: -4.011em; left: 0em;"><span id="MathJax-Span-85" class="texatom"><span id="MathJax-Span-86" class="mrow"><span style="font-family: STIXVariants;" id="MathJax-Span-87" class="mo">|</span></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.786em; left: 0.32em;"><span style="font-size: 70.7%; font-family: STIXGeneral;" id="MathJax-Span-88" class="mn">1</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.981em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.651em; border-left: 0px solid; width: 0px; height: 1.917em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML MJX_Assistive_MathML_Block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mo>−</mo><mo>∑</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>P</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mi>j</mi></msub><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><mi>w</mi><mo stretchy="false">)</mo><mo>+</mo><mi>λ</mi><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mi>w</mi><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><msub><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mn>1</mn></msub></math></span></span></div><script id="MathJax-Element-9" type="math/tex; mode=display">
+-\sum log P(y_j|x_j,w) + \lambda ||w||_1
+</script></p>
+
+<p>where </p>
+
+<p><span style="color: inherit; display: none;" class="MathJax_Preview"></span><div style="text-align: center;" class="MathJax_Display"><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;{&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;/msup&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x03A6;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;}&lt;/mo&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;munder&gt;&lt;mo&gt;&amp;#x2211;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2208;&lt;/mo&gt;&lt;mi&gt;G&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/munder&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;{&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;/msup&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x03A6;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;}&lt;/mo&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;/math&gt;" style="text-align: center; position: relative;" tabindex="0" id="MathJax-Element-10-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 20.545em; display: inline-block;" id="MathJax-Span-89" class="math"><span style="display: inline-block; position: relative; width: 16.694em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(0.788em, 1016.69em, 3.868em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-90" class="mrow"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-91" class="mi">P</span><span style="font-family: STIXGeneral;" id="MathJax-Span-92" class="mo">(</span><span id="MathJax-Span-93" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.43em, 4.379em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-94" class="mi">y</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-95" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span id="MathJax-Span-96" class="texatom"><span id="MathJax-Span-97" class="mrow"><span style="font-family: STIXVariants;" id="MathJax-Span-98" class="mo">|</span></span></span><span id="MathJax-Span-99" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-100" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-101" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-102" class="mo">,</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.188em;" id="MathJax-Span-103" class="mi">w</span><span style="font-family: STIXGeneral;" id="MathJax-Span-104" class="mo">)</span><span style="font-family: STIXGeneral; padding-left: 0.313em;" id="MathJax-Span-105" class="mo">=</span><span style="padding-left: 0.313em;" id="MathJax-Span-106" class="mfrac"><span style="display: inline-block; position: relative; width: 11.023em; height: 0px; margin-right: 0.12em; margin-left: 0.12em;"><span style="position: absolute; clip: rect(3.024em, 1006.74em, 4.47em, -1000em); top: -4.783em; left: 50%; margin-left: -3.422em;"><span id="MathJax-Span-107" class="mrow"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-108" class="mi">e</span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-109" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-110" class="mi">p</span><span style="font-family: STIXGeneral;" id="MathJax-Span-111" class="mo">{</span><span id="MathJax-Span-112" class="msubsup"><span style="display: inline-block; position: relative; width: 1.19em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.65em, 4.191em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-113" class="mi">w</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -4.374em; left: 0.667em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-114" class="mi">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.054em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-115" class="mi">Φ</span><span style="font-family: STIXGeneral;" id="MathJax-Span-116" class="mo">(</span><span id="MathJax-Span-117" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-118" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-119" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-120" class="mo">,</span><span style="padding-left: 0.188em;" id="MathJax-Span-121" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.43em, 4.379em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-122" class="mi">y</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-123" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-124" class="mo">)</span><span style="font-family: STIXGeneral;" id="MathJax-Span-125" class="mo">}</span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; clip: rect(3.087em, 1010.8em, 4.595em, -1000em); top: -3.274em; left: 50%; margin-left: -5.451em;"><span id="MathJax-Span-126" class="mrow"><span id="MathJax-Span-127" class="munderover"><span style="display: inline-block; position: relative; width: 4.087em; height: 0px;"><span style="position: absolute; clip: rect(3.087em, 1000.86em, 4.434em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; vertical-align: -0.002em;" id="MathJax-Span-128" class="mo">∑</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.714em; left: 0.914em;"><span id="MathJax-Span-129" class="texatom"><span id="MathJax-Span-130" class="mrow"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-131" class="mi">u</span><span style="font-size: 70.7%; font-family: STIXGeneral;" id="MathJax-Span-132" class="mo">∈</span><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-133" class="mi">G</span><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-134" class="mi">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.016em;"></span></span><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-135" class="mi">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.042em;"></span></span><span style="font-size: 70.7%; font-family: STIXGeneral;" id="MathJax-Span-136" class="mo">(</span><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-137" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.002em;"></span></span><span style="font-size: 70.7%; font-family: STIXGeneral;" id="MathJax-Span-138" class="mo">)</span></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.188em;" id="MathJax-Span-139" class="mi">e</span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-140" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-141" class="mi">p</span><span style="font-family: STIXGeneral;" id="MathJax-Span-142" class="mo">{</span><span id="MathJax-Span-143" class="msubsup"><span style="display: inline-block; position: relative; width: 1.19em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.65em, 4.191em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-144" class="mi">w</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -4.3em; left: 0.667em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-145" class="mi">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.054em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-146" class="mi">Φ</span><span style="font-family: STIXGeneral;" id="MathJax-Span-147" class="mo">(</span><span id="MathJax-Span-148" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-149" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-150" class="mi">j<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.001em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span><span style="font-family: STIXGeneral;" id="MathJax-Span-151" class="mo">,</span><span style="font-family: STIXGeneral; font-style: italic; padding-left: 0.188em;" id="MathJax-Span-152" class="mi">u</span><span style="font-family: STIXGeneral;" id="MathJax-Span-153" class="mo">)</span><span style="font-family: STIXGeneral;" id="MathJax-Span-154" class="mo">}</span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; clip: rect(0.854em, 1011.02em, 1.247em, -1000em); top: -1.304em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 11.023em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.084em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.491em; border-left: 0px solid; width: 0px; height: 3.521em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML MJX_Assistive_MathML_Block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>P</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mi>j</mi></msub><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><mi>w</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>e</mi><mi>x</mi><mi>p</mi><mo fence="false" stretchy="false">{</mo><msup><mi>w</mi><mi>T</mi></msup><mi mathvariant="normal">Φ</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><msub><mi>y</mi><mi>j</mi></msub><mo stretchy="false">)</mo><mo fence="false" stretchy="false">}</mo></mrow><mrow><munder><mo>∑</mo><mrow class="MJX-TeXAtom-ORD"><mi>u</mi><mo>∈</mo><mi>G</mi><mi>E</mi><mi>N</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></munder><mi>e</mi><mi>x</mi><mi>p</mi><mo fence="false" stretchy="false">{</mo><msup><mi>w</mi><mi>T</mi></msup><mi mathvariant="normal">Φ</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo><mo fence="false" stretchy="false">}</mo></mrow></mfrac></math></span></span></div><script id="MathJax-Element-10" type="math/tex; mode=display">
+P(y_j|x_j,w) = \frac{exp \{w^T \Phi(x_j,y_j)\}   }{ \sum_{u \in GEN(x)} exp\{ w^T\Phi(x_j,u) \}  }
+</script></p>
+
+<p>My question is, what are the features in this case? Some codified 
+version of the parsing tree? Are the features a statistical concept?</p>
+
+<p>I will also appreciate any bibliography that can be useful in tackling this issue.</p>
+
+<p><strong>UPDATE:</strong> I've talked to a professor and he had just 
+told me that the features are obtained after doing a classification 
+algorithm based on the parse-tree. Do you know what kind of 
+classification is done with the parse tree?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stats.stackexchange.com/questions/tagged/machine-learning" class="post-tag js-gps-track" title="show questions tagged 'machine-learning'" rel="tag">machine-learning</a> <a href="http://stats.stackexchange.com/questions/tagged/maximum-entropy" class="post-tag js-gps-track" title="show questions tagged 'maximum-entropy'" rel="tag">maximum-entropy</a> <a href="http://stats.stackexchange.com/questions/tagged/natural-language" class="post-tag js-gps-track" title="show questions tagged 'natural-language'" rel="tag">natural-language</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stats.stackexchange.com/q/15227" title="short permalink to this question" class="short-link" id="link-post-15227">share</a><span class="lsep">|</span><a href="http://stats.stackexchange.com/posts/15227/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stats.stackexchange.com/posts/15227/revisions" title="show all edits to this post">edited <span title="2011-09-06 17:54:35Z" class="relativetime">Sep 6 '11 at 17:54</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2011-09-05 17:52:03Z" class="relativetime">Sep 5 '11 at 17:52</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stats.stackexchange.com/users/2902/deps-stats"><div class="gravatar-wrapper-32"><img src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/91539f84aa4163cfa637c4dbe42df223.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stats.stackexchange.com/users/2902/deps-stats">deps_stats</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,009</span><span title="10 silver badges"><span class="badge2"></span><span class="badgecount">10</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15227" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-15227" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="15276"></a>
+<div id="answer-15276" class="answer" data-answerid="15276" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="15276" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The term "feature" is typically used generally within the context of machine learning. Given some raw data matrix <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-11-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.816em; display: inline-block;" id="MathJax-Span-155" class="math"><span style="display: inline-block; position: relative; width: 0.65em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.732em, 1000.65em, 2.71em, -1000em); top: -2.547em; left: 0em;"><span id="MathJax-Span-156" class="mrow"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-157" class="mi">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.044em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.547em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.067em; border-left: 0px solid; width: 0px; height: 0.937em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>X</mi></math></span></span><script id="MathJax-Element-11" type="math/tex">X</script> comprised of vectors <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-12-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.87em; display: inline-block;" id="MathJax-Span-158" class="math"><span style="display: inline-block; position: relative; width: 0.705em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.456em, 1000.71em, 2.38em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-159" class="mrow"><span id="MathJax-Span-160" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-161" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-162" class="mi">i</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.261em; border-left: 0px solid; width: 0px; height: 0.87em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mi>i</mi></msub></math></span></span><script id="MathJax-Element-12" type="math/tex">x_i</script>, and outputs <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-13-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.87em; display: inline-block;" id="MathJax-Span-163" class="math"><span style="display: inline-block; position: relative; width: 0.705em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.456em, 1000.71em, 2.428em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-164" class="mrow"><span id="MathJax-Span-165" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.43em, 4.379em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-166" class="mi">y</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-167" class="mi">i</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.32em; border-left: 0px solid; width: 0px; height: 0.929em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>y</mi><mi>i</mi></msub></math></span></span><script id="MathJax-Element-13" type="math/tex">y_i</script>, you transform each <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-14-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.87em; display: inline-block;" id="MathJax-Span-168" class="math"><span style="display: inline-block; position: relative; width: 0.705em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.456em, 1000.71em, 2.38em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-169" class="mrow"><span id="MathJax-Span-170" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-171" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-172" class="mi">i</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.261em; border-left: 0px solid; width: 0px; height: 0.87em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mi>i</mi></msub></math></span></span><script id="MathJax-Element-14" type="math/tex">x_i</script> into some <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msubsup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;msup&gt;&lt;mi&gt;&lt;/mi&gt;&lt;mo&gt;&amp;#x2032;&lt;/mo&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/msubsup&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-15-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 1.033em; display: inline-block;" id="MathJax-Span-173" class="math"><span style="display: inline-block; position: relative; width: 0.813em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.013em, 1000.81em, 2.528em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-174" class="mrow"><span id="MathJax-Span-175" class="msubsup"><span style="display: inline-block; position: relative; width: 0.796em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-176" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; clip: rect(3.309em, 1000.3em, 4.173em, -1000em); top: -4.355em; left: 0.498em;"><span id="MathJax-Span-177" class="texatom"><span id="MathJax-Span-178" class="mrow"><span id="MathJax-Span-179" class="msup"><span style="display: inline-block; position: relative; width: 0.223em; height: 0px;"><span style="position: absolute; clip: rect(3.848em, 1000em, 4.173em, -1000em); top: -4.011em; left: 0em;"><span style="font-size: 70.7%;" id="MathJax-Span-180" class="mi"></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -4.267em; left: 0em;"><span style="font-size: 50%; font-family: STIXVariants;" id="MathJax-Span-181" class="mo">′</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; clip: rect(3.386em, 1000.27em, 4.181em, -1000em); top: -3.713em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-182" class="mi">i</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.443em; border-left: 0px solid; width: 0px; height: 1.596em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>x</mi><mi>i</mi><mrow class="MJX-TeXAtom-ORD"><msup><mi></mi><mo>′</mo></msup></mrow></msubsup></math></span></span><script id="MathJax-Element-15" type="math/tex">x_i^{'}</script>.
+ The point of this is to have feature values that are as telling as 
+possible with respect to the output; for example, you would want them to
+ be correlated in some manner, or at least have like outputs near like 
+inputs in Euclidean space. Then you train your model (linear regression,
+ CART tree, whatever) on the new <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msubsup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;msup&gt;&lt;mi&gt;&lt;/mi&gt;&lt;mo&gt;&amp;#x2032;&lt;/mo&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/msubsup&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-16-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 1.033em; display: inline-block;" id="MathJax-Span-183" class="math"><span style="display: inline-block; position: relative; width: 0.813em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.013em, 1000.81em, 2.528em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-184" class="mrow"><span id="MathJax-Span-185" class="msubsup"><span style="display: inline-block; position: relative; width: 0.796em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-186" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; clip: rect(3.309em, 1000.3em, 4.173em, -1000em); top: -4.355em; left: 0.498em;"><span id="MathJax-Span-187" class="texatom"><span id="MathJax-Span-188" class="mrow"><span id="MathJax-Span-189" class="msup"><span style="display: inline-block; position: relative; width: 0.223em; height: 0px;"><span style="position: absolute; clip: rect(3.848em, 1000em, 4.173em, -1000em); top: -4.011em; left: 0em;"><span style="font-size: 70.7%;" id="MathJax-Span-190" class="mi"></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -4.267em; left: 0em;"><span style="font-size: 50%; font-family: STIXVariants;" id="MathJax-Span-191" class="mo">′</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; clip: rect(3.386em, 1000.27em, 4.181em, -1000em); top: -3.713em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-192" class="mi">i</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.443em; border-left: 0px solid; width: 0px; height: 1.596em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>x</mi><mi>i</mi><mrow class="MJX-TeXAtom-ORD"><msup><mi></mi><mo>′</mo></msup></mrow></msubsup></math></span></span><script id="MathJax-Element-16" type="math/tex">x_i^{'}</script>.</p>
+
+<p>In the context of NLP, given a sentence as your raw input data, perhaps (for example) your feature function maps each <span style="color: inherit; display: none;" class="MathJax_Preview"></span><span role="presentation" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" style="position: relative;" tabindex="0" id="MathJax-Element-17-Frame" class="MathJax"><nobr aria-hidden="true"><span style="width: 0.87em; display: inline-block;" id="MathJax-Span-193" class="math"><span style="display: inline-block; position: relative; width: 0.705em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.456em, 1000.71em, 2.38em, -1000em); top: -2.06em; left: 0em;"><span id="MathJax-Span-194" class="mrow"><span id="MathJax-Span-195" class="msubsup"><span style="display: inline-block; position: relative; width: 0.716em; height: 0px;"><span style="position: absolute; clip: rect(3.407em, 1000.45em, 4.184em, -1000em); top: -4.011em; left: 0em;"><span style="font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-196" class="mi">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span><span style="position: absolute; top: -3.861em; left: 0.444em;"><span style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;" id="MathJax-Span-197" class="mi">i</span><span style="display: inline-block; width: 0px; height: 4.011em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.06em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.261em; border-left: 0px solid; width: 0px; height: 0.87em;"></span></span></nobr><span role="presentation" class="MJX_Assistive_MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mi>i</mi></msub></math></span></span><script id="MathJax-Element-17" type="math/tex">x_i</script>
+ to a new vector containing counts of nouns, verbs and adjectives, 
+respectively. You might take this approach if you thought the different 
+parts of speech would impact the output variable significantly. In your 
+case, it sounds like the data gets parsed and then the parsed data is 
+somehow converted by the feature function into a real-valued vector 
+suitable for running machine learning algos on. If your prof said that 
+the vector was obtained by means of a classification algorithm, that 
+simply means that a classification algorithm (of any type, be it SVM, 
+LDA, Naive Bayes, etc.) was used to create the features. It seems he's 
+doing some sort of nested learning. Perhaps he's classifying whether a 
+particular parsed sentence has feature Q, and then putting the certainty
+ of having feature Q into the feature vectors, for example.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stats.stackexchange.com/a/15276" title="short permalink to this answer" class="short-link" id="link-post-15276">share</a><span class="lsep">|</span><a href="http://stats.stackexchange.com/posts/15276/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-09-06 22:22:49Z" class="relativetime">Sep 6 '11 at 22:22</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stats.stackexchange.com/users/5832/william"><div class="gravatar-wrapper-32"><img src="machine%20learning%20-%20In%20natural%20language%20parsing,%20what%20is%20the%20feature%20function%3F%20-%20Cross%20Validated_files/a06c60d631247a67d9df2d5cd3c36e07.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stats.stackexchange.com/users/5832/william">William</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">577</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15276" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27599" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks for your answer! Do 
+you know any reference in which I may read how the parses are classified
+ in order to create the features?</span>
+                    –&nbsp;<a href="http://stats.stackexchange.com/users/2902/deps-stats" title="1,009 reputation" class="comment-user owner">deps_stats</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment27599_15276"><span title="2011-09-08 14:25:28Z" class="relativetime-clean">Sep 8 '11 at 14:25</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-15276" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="/questions/15227/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="15227" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="https://www.google.com" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+        <script>
+            StackExchange.ifUsing("editor", function () {
+                return StackExchange.using("mathjaxEditing", function () {
+                    StackExchange.MarkdownEditor.creationCallbacks.add(function (editor, postfix) {
+                        StackExchange.mathjaxEditing.prepareWmdForMathJax(editor, postfix, [["$", "$"], ["\\\\(","\\\\)"]]);
+                    });
+                });
+            }, "mathjax-editing");
+        </script>
+
+        
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: false,
+                reputationToPostImages: null,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li style="left: 0px;" class="wmd-button" id="wmd-bold-button"><span style="background-position: 0px -20px;"></span></li><li style="left: 25px;" class="wmd-button" id="wmd-italic-button"><span style="background-position: -20px -20px;"></span></li><li style="left: 50px;" class="wmd-spacer" id="wmd-spacer1"><span style="background-position: -40px -20px;"></span></li><li style="left: 75px;" class="wmd-button" id="wmd-link-button"><span style="background-position: -40px -20px;"></span></li><li style="left: 100px;" class="wmd-button" id="wmd-quote-button"><span style="background-position: -60px -20px;"></span></li><li style="left: 125px;" class="wmd-button" id="wmd-code-button"><span style="background-position: -80px -20px;"></span></li><li style="left: 150px;" class="wmd-button" id="wmd-image-button"><span style="background-position: -100px -20px;"></span></li><li style="left: 175px;" class="wmd-spacer" id="wmd-spacer2"><span style="background-position: -120px -20px;"></span></li><li style="left: 200px;" class="wmd-button" id="wmd-olist-button"><span style="background-position: -120px -20px;"></span></li><li style="left: 225px;" class="wmd-button" id="wmd-ulist-button"><span style="background-position: -140px -20px;"></span></li><li style="left: 250px;" class="wmd-button" id="wmd-heading-button"><span style="background-position: -160px -20px;"></span></li><li style="left: 275px;" class="wmd-button" id="wmd-hr-button"><span style="background-position: -180px -20px;"></span></li><li style="left: 300px;" class="wmd-spacer" id="wmd-spacer3"><span style="background-position: -200px -20px;"></span></li><li style="left: 325px;" class="wmd-button" id="wmd-undo-button"><span style="background-position: -200px -20px;"></span></li><li style="left: 350px;" class="wmd-button" id="wmd-redo-button"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="c4ad2f49e1a6b56a0691c39292fe78b6" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stats.stackexchange.com/users/login?ssrc=question_page&amp;returnurl=http%3a%2f%2fstats.stackexchange.com%2fquestions%2f15227%2fin-natural-language-parsing-what-is-the-feature-function%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display:none" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstats.stackexchange.com%2fquestions%2f15227%2fin-natural-language-parsing-what-is-the-feature-function%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" name="privacy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" name="tos" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stats.stackexchange.com/questions/tagged/machine-learning" class="post-tag" title="show questions tagged 'machine-learning'" rel="tag">machine-learning</a> <a href="http://stats.stackexchange.com/questions/tagged/maximum-entropy" class="post-tag" title="show questions tagged 'maximum-entropy'" rel="tag">maximum-entropy</a> <a href="http://stats.stackexchange.com/questions/tagged/natural-language" class="post-tag" title="show questions tagged 'natural-language'" rel="tag">natural-language</a>  or <a href="http://stats.stackexchange.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2011-09-05 17:52:03Z"><b>5 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>1911 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stats.stackexchange.com/questions/15227/in-natural-language-parsing-what-is-the-feature-function?lastactivity" class="lastactivity-link" title="2011-09-06 22:22:49Z">5 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,0,"adzerk368139776",[5,17]).enableDynamicSiteSelection().setZone(56016); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk368139776"></div>
+			
+
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/20943?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">3</div></a><a href="http://stats.stackexchange.com/questions/20943/natural-language-processing-application-in-algorithmic-trading-and-sports-bettin?rq=1" class="question-hyperlink">Natural language processing application in algorithmic trading and sports betting</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/23445?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">17</div></a><a href="http://stats.stackexchange.com/questions/23445/why-does-natural-language-processing-not-fall-under-machine-learning-domain?rq=1" class="question-hyperlink">Why does Natural Language Processing not fall under Machine Learning domain?</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/61540?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">7</div></a><a href="http://stats.stackexchange.com/questions/61540/using-text-mining-natural-language-processing-tools-for-econometrics?rq=1" class="question-hyperlink">Using text mining/natural language processing tools for econometrics</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/90292?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">2</div></a><a href="http://stats.stackexchange.com/questions/90292/suggestion-for-books-on-visualization-and-natural-language-processing?rq=1" class="question-hyperlink">Suggestion for Books on Visualization and Natural Language Processing</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/105950?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://stats.stackexchange.com/questions/105950/maximum-entropy-model-for-classification-what-to-use-as-context-feature?rq=1" class="question-hyperlink">Maximum Entropy Model for classification, what to use as context &amp; feature?</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/124908?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stats.stackexchange.com/questions/124908/in-natural-language-processing-nlp-how-do-you-make-an-efficient-dimension-red?rq=1" class="question-hyperlink">In natural language processing (NLP), how do you make an efficient dimension reduction?</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/147225?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stats.stackexchange.com/questions/147225/categorization-of-survey-input-via-natural-language-processing-in-r?rq=1" class="question-hyperlink">Categorization of Survey Input via Natural Language Processing in R</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/154656?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">2</div></a><a href="http://stats.stackexchange.com/questions/154656/natural-language-measure-of-obfuscation?rq=1" class="question-hyperlink">Natural Language measure of obfuscation</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/188931?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stats.stackexchange.com/questions/188931/natural-language-calculator-using-machine-learning?rq=1" class="question-hyperlink">Natural language calculator using machine learning</a></div><div class="spacer js-gps-track"><a href="http://stats.stackexchange.com/q/226876?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://stats.stackexchange.com/questions/226876/identifying-question-type-natural-language?rq=1" class="question-hyperlink">Identifying question type (Natural Language)</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/2099461/whats-the-name-of-the-following-method-for-dividing-polynomials-its-not-long" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What's the name of the following method for dividing
+ polynomials? It's not long-division nor synthetic division
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/872278/is-it-safe-to-use-an-ubuntu-vm-on-windows-10-from-a-privacy-perspective" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it safe to use an Ubuntu VM on Windows 10 from a privacy perspective?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/150296/how-much-was-r2-d2-damaged-by-darth-vader-during-the-battle-of-yavin" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How much was R2-D2 damaged by Darth Vader during the battle of Yavin?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/150283/why-didnt-the-original-death-stars-shields-protect-against-small-fighters" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why didn't the original Death Star's shields protect against small fighters?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/93009/new-girl-gamer-in-our-dd-group-is-causing-weird-tension-what-to-do" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    New girl gamer in our D&amp;D group is causing weird tension - what to do?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-esperanto" title="Esperanto Language Stack Exchange"></div><a href="http://esperanto.stackexchange.com/questions/2704/how-to-say-rather" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:662 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to say "rather"?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="http://politics.stackexchange.com/questions/14411/what-is-this-symbol-doing-on-donald-trumps-podium" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is this symbol doing on Donald Trump's podium?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/348898/creating-a-fermat-spiral" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Creating a Fermat Spiral
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/148425/sending-a-client-side-high-score-to-a-server-securely" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Sending a client-side high-score to a server securely
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/156008/polymorphism-for-batch-processing-in-salesforce" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Polymorphism for Batch Processing in Salesforce
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="http://space.stackexchange.com/questions/19804/why-did-early-satellites-e-g-chinas-fanhui-shi-weixing-re-enter-the-atmosphe" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why did early satellites (e.g. China's Fanhui Shi Weixing) re-enter the atmosphere narrow end (nose)-first?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/66895/was-the-horse-shot-at-the-beginning-of-the-revenant-real" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Was the horse shot at the beginning of The Revenant real?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/826479/ubuntu-16-04-frozen-mdadm-array" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Ubuntu 16.04 - frozen mdadm array
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/86234/can-i-travel-with-my-new-zealand-visa-on-my-old-passport" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I travel with my New Zealand visa on my old passport
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/106583/can-you-use-a-router-like-a-saw-to-cut-wood" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can you use a router like a saw to cut wood?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/28631/is-it-bad-being-a-bad-influence-for-my-younger-cousin" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it bad being a "bad influence" for my younger cousin?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/872462/shutting-down-the-system-using-a-virtual-console" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Shutting down the system using a virtual console
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/34586/is-this-plane-landing-or-departing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is this plane landing or departing?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/106496/score-rock-paper-scissors" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Score rock-paper-scissors
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/103552/im-designing-a-no-data-usb-cable-how-should-the-end-be-marked" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I'm designing a no-data USB cable : How should the end be marked?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/280427/when-is-it-required-or-permitted-to-sample-below-nyquist-rate" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    When is it required or permitted to sample below Nyquist rate
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/115750/what-does-generates-5-6-figures-each-mean-in-the-sentence" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does "generates 5-6 figures each" mean in the sentence?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/150289/was-new-republic-supreme-chancellor-villecham-a-nod-to-neville-chamberlain" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Was New Republic Supreme Chancellor Villecham a nod to Neville Chamberlain?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/68044/how-does-a-self-cleaning-kitchen-put-away-the-dishes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does a self-cleaning kitchen put away the dishes?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stats.stackexchange.com/feeds/question/15227" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/15227/ivc/eb7c');});
+</script>
+<noscript>
+    <div><img src="/posts/15227/ivc/eb7c" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stats.stackexchange.com/tour">tour</a>
+                    <a href="http://stats.stackexchange.com/help">help</a>
+                    <a href="http://stats.blogoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackexchange.com/?tab=site&amp;host=stats.stackexchange.com">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://stats.stackexchange.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stats.stackexchange.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                        <li><a href="http://softwareengineering.stackexchange.com/" title="professionals, academics, and students working within the systems development life cycle who care about creating, delivering, and maintaining software responsibly">Software Engineering</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Wolfram Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                        <li><a href="http://crypto.stackexchange.com/" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://codereview.stackexchange.com/" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="http://magento.stackexchange.com/" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="http://dsp.stackexchange.com/" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="http://raspberrypi.stackexchange.com/" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="http://codegolf.stackexchange.com/" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://music.stackexchange.com/" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://ell.stackexchange.com/" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="http://japanese.stackexchange.com/" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="http://anime.stackexchange.com/" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="http://mechanics.stackexchange.com/" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="http://cs.stackexchange.com/" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                        <li><a href="http://philosophy.stackexchange.com/" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2017.1.16.24683
+            </div>
+                </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Cross Validated works best with JavaScript enabled<img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                ados_setKeywords('machine-learning,maximum-entropy,natural-language,x-host-stats.stackexchange.com');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-24', {'cookieDomain': 'stackexchange.com'});
+                ga('set', 'dimension2', '|machine-learning|maximum-entropy|natural-language|');
+                ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px none; margin: 0px;"><div style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px none; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-size-adjust: none; font-family: STIXSizeOneSym,sans-serif;" id="MathJax_Font_Test"></div></div></body></html>

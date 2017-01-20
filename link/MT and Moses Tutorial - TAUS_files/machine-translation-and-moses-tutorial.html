@@ -1,0 +1,671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>BugHerd Sidebar</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link href="machine-translation-and-moses-tutorial_data/css.css" rel="stylesheet" type="text/css"><style></style></head><body style="overflow: hidden;" onload="parent.window._bugHerd.loaded()"><script type="text/template" id="eventlist-template"></script>
+
+<script type="text/template" id="searchbar-template">
+  <div class="search-container" style="z-index: 10000000"></div>
+
+</script>
+
+<script type="text/template" id="tasklist-template"></script>
+
+<script type="text/template" id="commentitem-template">
+  <span class="itemInfo" title="<%=  _.escape(user.get('email')) %>"><%= _.escape(user.get('name')) %>
+    <% if (updated_at && (new Date(updated_at).getTime() !== new Date(created_at).getTime())) { %>
+      edited - <%= $.timeago(updated_at) %>
+    <% } else { %>
+      created - <%= $.timeago(created_at) %>
+    <% } %>
+  </span>
+
+  <div class="itemContent" data-comment-id="<%= _.textToSafeHTML(id) %>" data-comment-text="<%= _.textToSafeText(JSON.stringify(text)) %>">
+    <img src='<%= user.get('avatar') %>' width="32" height="32" />
+    <% if (id !== null && (bugherd.application.currentUser().get('id') === user.get('id'))) { %>
+      <a href="#" class="editComment" title="Edit your comment">Edit</a>
+    <% } %>
+    <p class="value"><%= _.textToSafeHTML(text) %></p>
+    <%if (commit_url){%>
+      <p class="value"><a href="<%= commit_url %>" target="_blank">go to commit</a></p>
+    <%}%>
+  </div>
+</script>
+
+<script type="text/template" id="eventitem-template">
+  <div class="itemContent">
+    <p class="value">
+      <%= _.escape(user.get('name')) %> <em><%= _.textToSafeHTML(changes_html) %></em> &ndash; <%= $.timeago(created_at) %>
+    </p>
+  </div>
+</script>
+
+<!-- =================== -->
+<!-- ISSUE DETAILS PANEL -->
+<!-- =================== -->
+<script type="text/template" id="detailPanel-template">
+
+  <div class="panelHead">
+    <h2>Task Details</h2>
+    <ul class="panelHeadActions">
+      <li class="miniButton button-closePanel"><button tabindex="-1">Close</button></li>
+      <% if (bugherd.application.get('location') == 'admin') { %><li class="miniButton button-expandPanel"><button tabindex="-1">Expand</button></li><%}%>
+      <% if (bugherd.application.get('location') != 'admin') { %><li class="miniButton loadingIcon"></li><%}%>
+    </ul>
+  </div>
+    
+  <div class="taskDetails panelContent flexHeight flexScroller">
+    <div class="taskDetailMain">
+      <div class="taskDetailMeta">
+
+        <span class="num taskDetailId"><span class="value local_task_id"></span></span>
+
+        <a data-status_id="null" class="taskDetailState">feedback</a>
+        <a data-status_id="0" class="taskDetailState">backlog</a>
+        <a data-status_id="1" class="taskDetailState">todo</a>
+        <a data-status_id="2" class="taskDetailState">doing</a>
+        <a data-status_id="4" class="taskDetailState">done</a>
+        <a data-status_id="5" class="taskDetailState">closed</a>
+
+        <time class="taskAge"></time>
+
+      </div>
+      <% if (bugherd.application.get('location') != 'admin') { %>
+      <b class="taskPriority">
+        #<span class="value id"></span>
+      </b>
+      <% } %>
+      <div title="click to edit description" class="taskDescriptionHolder value"></div>
+      <textarea title="&#8984; + &crarr;" class="bh taskDescription"></textarea>
+      <span class="count"><strong>0</strong>/255</span>
+        <div class="taskDetailActions">
+          <% if (bugherd.application.get('location') == 'admin') { %>
+          <div class="btn-group taskDetailSuppAction">
+            <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="btn-inner">Action</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu taskDetailSuppMenu pull-right">
+              <li class="delete"><a>delete</a></li>
+              <li class="divider serviceDivider"></li>
+              <li class="divider moveDivider"></li>
+              <li class="moveTask">
+                <span>Move to:</span>
+                <ul class="projectList">
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <% } %>
+          <span class="taskDetailMainAction splitButton">
+            <% if (bugherd.application.get('mode') == 'reporter') { %>
+              <a class="button" data-status_id="[null,0,1,2,4]" data-set_id="5">mark as closed</a>
+              <a class="button" data-status_id="5" data-set_id="null">mark as open</a>
+              <span class="buttonActions">
+                <small>select an option</small>
+                <ul class="taskDetailSubActions">
+                  <li><a data-status_id="[null,0,1,2,4]">open</a></li>
+                  <li><a data-status_id="5">closed</a></li>
+                </ul>
+              </span>
+            <% } else  { %>
+              <a class="button" data-status_id="null" data-set_id="0">move to backlog</a>
+              <a class="button" data-status_id="0" data-set_id="1">mark as todo</a>
+              <a class="button" data-status_id="1" data-set_id="2">mark as doing</a>
+              <a class="button" data-status_id="2" data-set_id="4">mark as done</a>
+              <a class="button" data-status_id="4" data-set_id="5">mark as closed</a>
+              <a class="button" data-status_id="5" data-set_id="0">move to backlog</a>
+              <span class="buttonActions">
+                <small>select an option</small>
+                <ul class="taskDetailSubActions">
+                  <li><a data-status_id="0">backlog</a></li>
+                  <li><a data-status_id="1">todo</a></li>
+                  <li><a data-status_id="2">doing</a></li>
+                  <li><a data-status_id="4">done</a></li>
+                  <li><a data-status_id="5">closed</a></li>
+                </ul>
+              </span>
+            <% } %>
+          </span>
+        </div>
+    </div>
+    <div class="">
+      <div class="taskDetailContent">
+        <div class="task-detail-infos">
+          <div class="detailBlock screenshotBlock">
+            <span class="label">screenshot</span>
+            <div class="detailText screenshotMissing">not available</div>
+            <a class="detailAction screenshotToggle">view screenshot</a>
+            <div class="screenshotWindowHolder" style="display:none">
+              <div class="screenshotFlag"/>
+              <img class="screenshotImage"/>
+            </div>
+          </div>
+          <div class="detailBlock taskDetailRelativeUrlRow">
+            <span class="label">location</span>
+            <a class="taskDetailRelativeUrl" target="_parent"></a>
+          </div>
+          <div class="detailBlock detailBlockPriority">
+            <span class="label">severity</span>
+            <% if (bugherd.application.get('mode') == 'developer') { %>
+              <select class="taskDetailPriority">
+                <option value="0">not set</option>
+                <option value="1">critical</option>
+                <option value="2">important</option>
+                <option value="3">normal</option>
+                <option value="4">minor</option>
+              </select>
+            <% } else { %>
+              <span class="taskDetailPriority"></span>
+            <% } %>
+          </div>
+          <% if (bugherd.application.get('mode') == 'developer') { %>
+            <div class="detailBlock detailBlockAssignee">
+              <span class="label">assigned to</span>
+              <div class="detailText" style="float:right; width:200px; text-align:left; position:relative;">
+                <select class="taskDetailAssignee" multiple style="width:200px;" data-placeholder="unassigned">
+                  <option></option>
+                </select>
+              </div>
+            </div>
+          <% } %>
+          <div class="detailBlock">
+            <span class="label">reported by</span>
+            <span class="detailText taskDetailCreator"></span>
+          </div>
+          <% if (bugherd.application.get('mode') == 'developer') { %>
+            <div class="detailBlock detailBlockTags">
+              <span class="label">tags</span>
+              <div class="detailText" style="float:right; width:200px; text-align:left; position:relative;">
+                <input id="detailTags" type="text" style="width:200px" />
+              </div>
+            </div>
+            <div class="detailBlock detailBlockDueDate">
+              <span class="label">due date</span>
+              <div class="detailText" style="float:right; width:200px; text-align:left; position:relative;">
+                <input id="detailDueDate" type="text" />
+              </div>
+            </div>
+          <% } %>
+
+          <% if (!bugherd.application.get('attachmentsDisabled')) { %>
+            <div class="detailBlock attachBlock">
+              <span class="label">attachments</span>
+            <a class="detailAction" id="attachFile" style='display:none;'>attach file</a>
+            <form class="attachmentUpload" method="post" enctype="multipart/form-data">
+              <input type="file" name="file" class="attachButton">
+            </form>
+            <ul class="attachList"></ul>
+              <div class="detailProgressOut" style="height:24px; width:100; padding: 3px;display:none;"><div class="detailProgressBlock" style="background:#718894; width:0%; height:100%; -webkit-border-radius: 3px 3px;"></div></div>
+            </div>
+          <% } %>
+
+          <div class="detailBlock detailBlockDetails">
+            <span class="label">additional info</span>
+            <a class="detailAction detailToggle">show details</a>
+            <table class="additionalInfo">
+              <tr class="taskData taskDetailAbsoluteUrlRow">
+                <th>Task logged at: </th>
+                <td><a class="taskDetailAbsoluteUrl" target="_parent"></a></td>
+              </tr>
+              <tr class="taskData">
+                <th>Operating System: </th>
+                <td class="browserData-os value"></td>
+              </tr>
+              <tr class="taskData">
+                <th>Browser: </th>
+                <td class="browserData-browser value"></td>
+              </tr>
+              <% if (bugherd.application.get('mode') == 'developer') { %>
+                <tr class="taskData">
+                  <th>Selector:</th>
+                  <td class="taskDetailSelector selector_info value"></td>
+                </tr>
+              <% } %>
+              <tr class="taskData">
+                <th>Resolution: </th>
+                <td class="browserData-resolution value"></td>
+              </tr>
+              <tr class="taskData">
+                <th>Browser Window: </th>
+                <td class="browserData-window_size value"></td>
+                </tr>
+              <tr class="taskData">
+                <th>Color Depth: </th>
+                <td class="browserData-colours value"></td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="detailBlock activityBlock">
+          <span class="label">comments</span>
+
+          <a class="detailAction activityToggle">view log</a>
+          <div class="taskComment inactive">
+            <textarea class="bh" placeholder="click to add a comment"></textarea>
+            <div class="commentActions">
+              <button class="btn submit">post comment</button> or <a class="cancelLink">cancel</a>
+                <span class="count"><strong>0</strong> / 1000</span>
+            </div>
+            <div class="commentBlock">
+
+            </div>
+          </div>
+          <div class="eventBlock" style="display:none">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- =========================== -->
+<!-- SUB VIEW FOR USER META DATA -->
+<!-- =========================== -->
+<script type="text/template" id="userMetaData-template">
+  <tr class="taskData userMetaData">
+    <th><%= key %>: </th>
+    <td class="value"><%= value %></td>
+  </tr>
+</script>
+
+<!-- =============== -->
+<!-- ISSUE LIST ITEM -->
+<!-- =============== -->
+<script type="text/template" id="taskitem-template">
+  <div class="taskLink">
+    <span class="taskID"><%= local_task_id %></span>
+    <div class="taskContent p<%= priority_id %>">
+      <b class="task-severity p<%= priority_id %>"><%= priority_id %></b>
+      <p class="taskText truncated_description value"><%= _.encodeHTML(description) %></p>
+      <span class="bhAlertBug" style="display:none">new activity</span>
+      <div class="task-actions">
+        <% if (bugherd.application.get('location') == 'admin') { %>
+            <% if (status_id != 5) { %>
+              <span class="miniButton button-triageAccept">
+                <a href="#" title="move to task board" class="backlog">move to task board</a>
+              </span>
+            <% } else { %>
+              <span class="miniButton button-archiveDecline">
+                <a href="#" title="move to task board" class="backlog">move to task board</a>
+              </span>
+            <% } %>
+          <% } else { %>
+
+        <% } %>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- ======================= -->
+<!-- ISSUE LOGGING INTERFACE -->
+<!-- ======================= -->
+<script type="text/template" id="taskcreate-template">
+<div class="bh-entry-wrap">
+<div class="bh-entry-inner-wrap">
+<div class="bh-entry<% if (bugherd.application.get('mode') != 'developer') { %> entry-compact entry-basic<% } %>">
+  <div class="entry-head">
+    <h3></h3>
+    <a href="javascript:void(0);" class="entry-close">&times;</a>
+  </div>
+  <div class="entry-content">
+    <div class="entry-description controls-row">
+      <% if (bugherd.application.get('mode') == 'anonymous') { %>
+      <label class="inline" for="bh-description"><%= bugherd.getConfigOption('feedback','feedback_entry_placeholder') || 'write a comment or describe a problem' %></label>
+      <textarea id="bh-description" /></textarea>
+      <% } else { %>
+      <textarea id="bh-description" placeholder="write a comment or describe a problem" /></textarea>
+      <% } %>
+    </div>
+    <% if (bugherd.application.get('mode') == 'developer') { %>
+    <div class="entry-details">
+      <div class="entry-detail">
+        <label>assignee</label>
+        <div class="assigneeHolder">
+          <input id="bh-assignee" type="text" />
+        </div>
+      </div>
+      <div class="entry-detail">
+        <label>severity</label>
+        <select id="bh-severity">
+          <option value="0">not set</option>
+          <option value="1">critical</option>
+          <option value="2">important</option>
+          <option value="3">normal</option>
+          <option value="4">minor</option>
+        </select>
+      </div>
+      <div class="entry-detail">
+        <label>tags</label>
+        <div class="tagHolder" >
+          <input id="bh-tags" type="text" />
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+      <div class="reporter-wrap controls-row">
+        <% if (bugherd.application.get('mode') != 'reporter') { %>
+        <label class="inline" for="bh-reporter"><%= bugherd.getConfigOption('feedback','feedback_email_placeholder') || 'your email address' %></label>
+        <input id="bh-reporter" type="email" value="<%= bugherd.getConfigOption('reporter','email') || bhReporter || "" %>" maxlength="255" />
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+  <div class="entry-confirmation">
+    <div class="confirm-message confirm-success">
+        <span class="confirm-icon"></span>
+        <% if (bugherd.application.get('mode') === 'anonymous'){ %>
+          <% if (bugherd.isExtension) { %>
+            <p>Here is a URL you can share with the site owner:</p>
+          <% } else { %>
+            <p><%= bugherd.getConfigOption('feedback','confirm_success_text') || "Your feedback was sent." %></p>
+          <% } %>
+        <% } else { %>
+          <p>Task successfully added.</p>
+        <% } %>
+        <div class="extension-message">
+            <%= bugherd.getConfigOption('feedback', 'confirm_extension_text') || "Did you know you can send a screenshot with your bug reports?" %> <span class="link linkHover"><%= bugherd.getConfigOption('feedback','confirm_extension_link_text') || "Find out how." %></span>
+        </div>
+        <br />
+        <button class="button-close button"><%= bugherd.getConfigOption('feedback','confirm_close_text') || "close" %></button>
+      </div>
+      <div class="confirm-message confirm-loading">
+        <span class="confirm-icon"></span>
+        <p>
+          <% if (bugherd.application.get('mode') === 'anonymous'){ %>
+            <%= bugherd.getConfigOption('feedback','confirm_loading_text') || "Sending feedback." %>
+          <% } else { %>
+            Saving feedback.
+          <% } %>
+        </p>
+      </div>
+      <div class="confirm-message confirm-error">
+        <span class="confirm-icon"></span>
+        <p>
+          <% if (bugherd.application.get('mode') === 'anonymous'){ %>
+            <%= bugherd.getConfigOption('feedback','confirm_error_text') || "Sending feedback was unsuccessful." %>
+          <% } else { %>
+            Saving feedback was unsuccessful.
+          <% } %>
+        </p>
+        <br />
+        <button class="button-close button"> <%= bugherd.getConfigOption('feedback','confirm_retry_text') || "Try again" %></button>
+      </div>
+  </div>
+  <div class="entry-actions">
+    <% if (bugherd.application.get('location') == 'admin') { %>
+      <button class="button button-confirm button-admin">create task</button>
+    <% } else if ( (bugherd.application.get('mode') == 'developer') || (bugherd.application.get('mode') == 'reporter') ) { %>
+      <button class="button button-confirm button-task">create task</button>
+    <% } else if ((bugherd.application.get('mode') == 'anonymous') && (!bugherd.isUnsubscribed)) { %>
+      <button class="button button-confirm button-feedback"><%= bugherd.getConfigOption('feedback','feedback_submit_text') || "send feedback" %></button>
+    <% } %>
+    <% /* <span class="action">
+      <a href="#" class="action-link">tag a page element</a>
+    </span> */ %>
+  </div>
+  <% if (bugherd.application.get('mode') == 'anonymous') { %>
+    <% if (bugherd.application.get('customBrand')) { %>
+      <% if (bugherd.getConfigOption('brand','feedback_logo')) { %>
+      <span class="credit" style="background:none;"><img src="<%= bugherd.getConfigOption('brand','feedback_logo') %>" alt="logo" style="max-width:60px;max-height:60px;" /></span>
+      <% } %>
+    <% } else { %>
+    <a href="https://www.bugherd.com/?utm_source=public&utm_medium=widget" target="_blank" tabindex="-1" class="credit">powered by <strong>BugHerd</strong></a>
+    <% } %>
+  <% } %>
+</div>
+</div>
+</div>
+</script>
+<!-- ================ -->
+<!-- ISSUE LIST PANEL -->
+<!-- ================ -->
+<script type="text/template" id="listPanel-template">
+  <div class="menuHolder">
+    <div class="panelHead">
+      <h2>Task List</h2>
+      <ul class="panelHeadActions">
+        <li class="miniButton button-closePanel"><button tabindex="-1">close</button></li>
+        <li class="miniButton button-viewOptions">
+          <span>view options</span>
+          <small><b>show options</b></small>
+          <ul class="panelViewOptions">
+            <li><a class="sortLink" data-sort-attr="priority_id">severity</a></li>
+            <li><a class="sortLink" data-sort-attr="created_at">time created</a></li>
+            <li><a class="sortLink" data-sort-attr="updated_at">last modified</a></li>
+            <li><a class="sortLink" data-sort-attr="assignee_ids">assigned to</a></li>
+            <li class="bordered"><a class="orderLink opt-sortDirection">ascending order</a></li>
+            <li><a class="currentPageLink opt-currentPage">this page only</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="panelPopup searchPopup searchbarHolder"></div>
+    <div class="panelPopup alertsPopup unreadListHolder"></div>
+    <div class='fixedHeader listHeading'></div>
+  </div>
+  <div class="nano listHolder flexHeight">
+  <div class="content" style="position: absolute; overflow: scroll; overflow-x: hidden; top: 0; bottom: 0; left: 0; width: 350px;"></div>
+  </div>
+</script>
+
+<script type="text/template" id="unreadtaskevent-template">
+  <%= user.name %> <%= changes_html %> &ndash; <%= $.timeago(created_at) %>
+</script>
+
+<script type="text/template" id="unreadtask-template">
+  <td class="alertId taskLink">
+    <span class="p<%= priority_id %>"><%= local_task_id %></span>
+  </td>
+  <td>
+    <dl class="unreadTaskEvents">
+      <dt class="unreadTaskDescription"><%= _.textToSafeHTML(description) %></dt>
+    </dl>
+  </td>
+</script>
+
+<script type="text/template" id="unreadlist-template">
+  <div class="popupActions">
+    <span class="unreadTasksCount"></span> tasks recently changed
+    <a class="clearAllButton">clear all</a>
+  </div>
+  <div class="alertList empty">
+    <table class="unreadTasks"></table>
+  </div>
+</script>
+
+<script type="text/template" id="sidebar-template">
+  <div class="mainNav">
+    <% if (bugherd.application.get('customBrand')) { %>
+      <% if (bugherd.getConfigOption('brand','sidebar_logo')) { %>
+      <img src="<%= bugherd.getConfigOption('brand','sidebar_logo') %>" alt="logo" style="max-width:60px;max-height:60px;margin: 10px 5px 0;" />
+      <% } %>
+    <% } else { %>
+    <h1><a target="_blank" href="https://www.bugherd.com/projects">BugHerd</a></h1>
+    <% } %>
+    <ul class="sidebarNav">
+      <% if (bugherd.application.get('mode') == 'developer') { %>
+        <!-- Basic developer view: Show issues assigned to me, issues I'm watching, and my team's issues -->
+        <li class="navItem topFilter active nav-mine" data-owner="mine"><h4 class="navUserName navUser" data-tooltip="tasks assigned to you"><span>mine</span></h4>
+          <ul class="navStates">
+            <li class="navStateItem subFilter" data-status_id="0">backlog <strong class="value-counter"></strong></li>
+            <li class="navStateItem subFilter" data-status_id="1">todo <strong class="value-counter"></strong></li>
+            <li class="navStateItem subFilter" data-status_id="2">doing <strong class="value-counter"></strong></li>
+          </ul>
+        </li>
+        <li class="navItem topFilter nav-all" data-owner="all"><h4 class="navUserName navAll" data-tooltip="tasks for your team"><span>all</span></h4>
+          <ul class="navStates">
+            <li class="navStateItem subFilter" data-status_id="0">backlog <strong class="value-counter"></strong></li>
+            <li class="navStateItem subFilter" data-status_id="1">todo <strong class="value-counter"></strong></li>
+            <li class="navStateItem subFilter" data-status_id="2">doing <strong class="value-counter"></strong></li>
+            <li class="navStateItem subFilter" data-status_id="4">done <strong class="value-counter"></strong></li>
+          </ul>
+        </li>
+      <% } else { %>
+        <!-- Reporter view: Show issues created by me, grouped into either open or closed -->
+        <li class="navItem topFilter active nav-reported" data-owner="reported"><h4 class="navUserName navReported" data-tooltip="issues  reported by you"><span>mine</span></h4>
+          <ul class="navStates">
+            <li class="navStateItem subFilter" data-status_id="[null,0,1,2,4]">open <strong class="value-counter"></strong></li>
+            <li class="navStateItem subFilter" data-status_id="5">closed <strong class="value-counter"></strong></li>
+          </ul>
+        </li>
+      <% } %>
+    </ul>
+    <ul class="navNewUL">
+      <li class="navItem">
+        <h4 class="navUserName navNew" data-tooltip="log a new issue"><span>new issue</span></h4>
+      </li>
+    </ul>
+  </div>
+</script>
+
+<script type="text/template" id="anonymousbar-template">
+  <div class="feedbackTab" <%= (bugherd.getConfigOption('feedback','hide')) ? 'style="display:none;"' : '' %>> <%= bugherd.getConfigOption('feedback','tab_text') || "Send Feedback" %></div>
+  <div class="bh-entry-wrap" style="display:none;">
+    <div class="bh-entry-inner-wrap">
+      <div class="bh-entry entry-compact">
+        <div class="entry-head">
+          <h3><%= bugherd.getConfigOption('feedback','option_title_text') || "Choose an option" %></h3>
+          <a href="javascript:void(0);" class="entry-close">&times;</a>
+        </div>
+        <div class="entry-content">
+          <a href="#" class="entry-option option-pin"><%= bugherd.getConfigOption('feedback','option_pin_text') || "I have feedback regarding a specific part of this page." %></a>
+          <a href="#" class="entry-option option-site"><%= bugherd.getConfigOption('feedback','option_site_text') || "I have feedback regarding this page or site as a whole." %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="bugbar-template">
+  <div class="bugbarActions">
+    <a class="navBugPin active" data-tooltip="tag an element">tag element</a>
+    <a class="navBugPage" data-tooltip="tag this page">tag page</a>
+    <a class="navBugCancel" data-tooltip="cancel issue tagging">done</a>
+  </div>
+</script>
+
+<script type="text/template" id="app-template">
+  <div class="anonymousbarWrapper"></div>
+  <div class="bugbarWrapper"></div>
+  <div class="sidebar">
+    <div class="sidebarWrapper"></div>
+    <div class="listbarWrapper"></div>
+    <div class="detailbarWrapper"></div>
+  </div>
+  <ul class="navOpts">
+    <li class="navItem navToggle" data-tooltip="toggle the sidebar">
+      <h4 class="navUserName"><span>hide this</span></h4>
+    </li>
+    <!--<li class="navItem navSupport" data-tooltip="email support">
+      <h4 class="navUserName"><a href="mailto:support@bugherd.com">send a support email</a></h4>
+    </li>-->
+  </ul>
+  <div class="taskcreateWrapper"</div>
+</script>
+<script src="machine-translation-and-moses-tutorial_data/sidebar-e93622e4a48823d6ef26684840777023a256a2cd6471d1e545138.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="machine-translation-and-moses-tutorial_data/sidebar-df02b03d2e4dd37e2a9cb104eba74452e2ca487d37efe906b4eb.css"><div style="display: none;"></div><div style="top: 0px; left: 0px; width: 100%; height: 100%; position: fixed; background: rgb(29, 49, 58) none repeat scroll 0% 0%; opacity: 0.7; cursor: crosshair; z-index: 199; display: none;" class="bhAdminFader"></div><div style="z-index: 2147483645; display: block;" class="sidebarApplication sidebarHidden" experiments="slack_integration,toggleable_sidebar,edit_comment,due_date,move_task" mode="anonymous" currentuser="[object Object]" assets="[object Object]" projectid="50895" tags="" sortattribute="priority_id" sidebar_pagefiltered="false" sortascending="true" bugherdurl="https://www.bugherd.com" pusherapikey="edf8b9a8b50d1c28bb17" pusherchannelid="projectmw7Lg8GjAlY5Q5YSxepbIQ" currentuserid="-1" statuses="[object Object]" priorities="[object Object]">
+  <div style="display: block;" class="anonymousbarWrapper"><div style="display: block;" class="anonymousReport position-bottom-right">
+  <div class="feedbackTab"> How can we make this page better for you?</div>
+  <div class="bh-entry-wrap" style="display:none;">
+    <div class="bh-entry-inner-wrap">
+      <div class="bh-entry entry-compact">
+        <div class="entry-head">
+          <h3>Choose an option</h3>
+          <a href="javascript:void(0);" class="entry-close">×</a>
+        </div>
+        <div class="entry-content">
+          <a href="#" class="entry-option option-pin">I have feedback regarding a specific part of this page.</a>
+          <a href="#" class="entry-option option-site">I have feedback regarding this page or site as a whole.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+  <div style="display: none;" class="bugbarWrapper"></div>
+  <div class="sidebar">
+    <div style="display: none;" class="sidebarWrapper"></div>
+    <div style="display: none;" class="listbarWrapper"></div>
+    <div style="display: none;" class="detailbarWrapper"></div>
+  </div>
+  <ul style="display: none;" class="navOpts">
+    <li class="navItem navToggle" data-tooltip="toggle the sidebar">
+      <h4 class="navUserName"><span>hide this</span></h4>
+    </li>
+    <!--<li class="navItem navSupport" data-tooltip="email support">
+      <h4 class="navUserName"><a href="mailto:support@bugherd.com">send a support email</a></h4>
+    </li>-->
+  </ul>
+  <div class="taskcreateWrapper" <="" div="">
+<div style="display: none;" class="taskCreate">
+<div class="bh-entry-wrap">
+<div class="bh-entry-inner-wrap">
+<div class="bh-entry entry-compact entry-basic">
+  <div class="entry-head">
+    <h3></h3>
+    <a href="javascript:void(0);" class="entry-close">×</a>
+  </div>
+  <div class="entry-content">
+    <div class="entry-description controls-row">
+      
+      <label class="inline" for="bh-description">write a comment or describe a problem</label>
+      <textarea id="bh-description"></textarea>
+      
+    </div>
+    
+      <div class="reporter-wrap controls-row">
+        
+        <label class="inline" for="bh-reporter">your email address</label>
+        <input id="bh-reporter" maxlength="255" type="email">
+        
+      </div>
+    
+  </div>
+  <div class="entry-confirmation">
+    <div class="confirm-message confirm-success">
+        <span class="confirm-icon"></span>
+        
+          
+            <p>Your feedback was sent.</p>
+          
+        
+        <div class="extension-message">
+            Did you know you can send a screenshot with your bug reports? <span class="link linkHover">Find out how.</span>
+        </div>
+        <br>
+        <button class="button-close button">close</button>
+      </div>
+      <div class="confirm-message confirm-loading">
+        <span class="confirm-icon"><div aria-role="progressbar" style="position: relative; z-index: 200; left: 22px; top: 22px;" class="spinner"><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-0-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(0deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-1-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(32deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-2-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(65deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-3-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(98deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-4-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(130deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-5-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(163deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-6-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(196deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-7-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(229deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-8-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(261deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-9-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(294deg) translate(4px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: 1s linear 0s normal none infinite running opacity-30-25-10-11;"><div style="position: absolute; width: 7px; height: 3px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(327deg) translate(4px, 0px); border-radius: 1px;"></div></div></div></span>
+        <p>
+          
+            Sending feedback.
+          
+        </p>
+      </div>
+      <div class="confirm-message confirm-error">
+        <span class="confirm-icon"></span>
+        <p>
+          
+            Sending feedback was unsuccessful.
+          
+        </p>
+        <br>
+        <button class="button-close button"> Try again</button>
+      </div>
+  </div>
+  <div class="entry-actions">
+    
+      <button class="button button-confirm button-feedback">send feedback</button>
+    
+    
+  </div>
+  
+    
+    <a href="https://www.bugherd.com/?utm_source=public&amp;utm_medium=widget" target="_blank" tabindex="-1" class="credit">powered by <strong>BugHerd</strong></a>
+    
+  
+</div>
+</div>
+</div>
+</div></div></div></body></html>

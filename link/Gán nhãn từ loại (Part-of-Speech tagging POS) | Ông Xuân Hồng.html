@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gán nhãn từ loại (Part-of-Speech tagging POS) | Ông Xuân Hồng</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://ongxuanhong.wordpress.com/xmlrpc.php">
+
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Ông Xuân Hồng »" href="https://ongxuanhong.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Ông Xuân Hồng »" href="https://ongxuanhong.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Ông Xuân Hồng » Gán nhãn từ loại (Part-of-Speech tagging&nbsp;POS) Dòng phản hồi" href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/feed/">
+	<script src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/beacon.js" async=""></script><script async="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/showad.js" type="text/javascript"></script><script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1473172720h&ver=4.6.1-RC1-38499"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/wp-emoji-release.js"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="all-css-0-1" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a.css" type="text/css" media="all">
+<link rel="stylesheet" id="sequential-montserrat-css" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/css_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="sequential-open-sans-css" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/css_003.css" type="text/css" media="all">
+<link rel="stylesheet" id="sequential-source-code-pro-css" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-6-1" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-7-1" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-8-1" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_004.css" type="text/css" media="all">
+<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a"></script>
+<link rel="stylesheet" id="all-css-0-2" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ongxuanhong.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Language Modeling là&nbsp;gì" href="https://ongxuanhong.wordpress.com/2016/08/27/language-modeling-la-gi/">
+<link rel="next" title="Data Scientists nên xem&nbsp;gì" href="https://ongxuanhong.wordpress.com/2016/09/04/data-scientists-nen-xem-gi/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a.html">
+<link rel="shortlink" href="http://wp.me/p2Rzzn-2aO">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gán nhãn từ loại (Part-of-Speech tagging POS)">
+<meta property="og:url" content="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/">
+<meta property="og:description" content="Trong nhiều tác vụ của Xử lý ngôn ngữ tự nhiên (XLNNTN), ta mong muốn xây dựng được một mô hình mà chuỗi các quan sát đầu vào (từ, ngữ, câu,…) đi kèm với chuỗi các nhãn đầu ra (từ loại, ranh …">
+<meta property="article:published_time" content="2016-09-02T09:17:11+00:00">
+<meta property="article:modified_time" content="2016-09-02T09:17:11+00:00">
+<meta property="og:site_name" content="Ông Xuân Hồng">
+<meta property="og:image" content="https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=240">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/509ae8987c7c487c58a99fb66d943189?s=32" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/509ae8987c7c487c58a99fb66d943189?s=32" sizes="16x16">
+<link rel="apple-touch-icon-precomposed" href="https://secure.gravatar.com/blavatar/509ae8987c7c487c58a99fb66d943189?s=114">
+<link rel="openid.server" href="https://ongxuanhong.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://ongxuanhong.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://ongxuanhong.wordpress.com/osd.xml" title="Ông Xuân Hồng">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+				<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Ông Xuân Hồng"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Chia sẻ kiến thức và thông tin về Machine learning"><meta name="msapplication-task" content="name=Theo dõi;action-uri=https://ongxuanhong.wordpress.com/feed/;icon-uri=https://secure.gravatar.com/blavatar/509ae8987c7c487c58a99fb66d943189?s=16"><meta name="msapplication-task" content="name=Đăng ký một blog miễn phí;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Hỗ trợ của WordPress.com;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Diễn đàn của WordPress.com;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="Gán nhãn từ loại (Part-of-Speech tagging&nbsp;POS) | Ông Xuân Hồng on WordPress.com">
+<meta name="description" content="Trong nhiều tác vụ của Xử lý ngôn ngữ tự nhiên (XLNNTN), ta mong muốn xây dựng được một mô hình mà chuỗi các quan sát đầu vào (từ, ngữ, câu,...) đi kèm với chuỗi các nhãn đầu ra (từ loại, ranh giới ngữ, tên thực thể,...) gọi là pairs of sequences. Gán nhãn từ…">
+		<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/amzn_ads.js"></script>
+		<script type="text/javascript">
+		try { amznads.getAds("3033"); } catch(e) { /* ignore */ }
+		</script><script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/bid"></script>
+		<script type="text/javascript">
+		try {
+			var a9_p = amznads.getKeys(),
+			_ipw_custom = {
+				wordAds: '0',
+				adSafe: '0',
+				domain: 'ongxuanhong.wordpress.com',
+				pageURL: 'https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/'
+			};
+			if("undefined"!=typeof a9_p&&""!=a9_p&&null!==a9_p&&"[object Array]"===Object.prototype.toString.call(a9_p)){var a="",b=0,c=a9_p.length;a9_p.sort();for(var d=0;d<c;d++){a9_p[d-b]=a9_p[d-b].replace(/a1x6p/,"a160x600p");var e=a9_p[d-b].split("p");e[0]==a&&(a9_p.splice(d-b,1),b++);a=e[0]}_ipw_custom.amznPay=a9_p};document.close();
+		} catch(e) {}
+		</script> 		<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/publishertag.js"></script>
+ 		<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/head.js"></script>
+		<script type="text/javascript">
+		jQuery(window).ready(function () {
+			jQuery("a.wpa-about").text("Về quảng cáo");
+		});
+		</script><link rel="amphtml" href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/amp/"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'wordpress.com']);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/ga.js" async="" type="text/javascript"></script>
+<style type="text/css"></style><script src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a.js" async="" type="text/javascript"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/services.css"><script src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_002.js" async="" type="text/javascript"></script></head>
+
+<body class="single single-post postid-8358 single-format-standard mp6 customizer-styles-applied highlander-enabled highlander-light">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+				<div class="wrapper">
+			<div class="site-branding">
+								<h1 class="site-title"><a href="https://ongxuanhong.wordpress.com/" rel="home">Ông Xuân Hồng</a></h1>
+				<h2 class="site-description">Chia sẻ kiến thức và thông tin về Machine learning</h2>
+			</div>
+
+							<nav id="site-navigation" class="main-navigation" role="navigation">
+					<button class="menu-toggle" aria-expanded="false"><span class="screen-reader-text">Menu</span></button>
+					<div class="menu-primary"><ul id="menu-main-menu" class="clear nav-menu"><li id="menu-item-318" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-318"><a href="https://ongxuanhong.wordpress.com/category/du-an/">Dự án</a></li>
+<li id="menu-item-2413" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-2413"><a class="dropdown-link" href="https://ongxuanhong.wordpress.com/category/kien-thuc/">Kiến thức</a>
+<ul class="sub-menu">
+	<li id="menu-item-2414" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2414"><a href="https://ongxuanhong.wordpress.com/category/kien-thuc/machine-learning/">Machine learning</a></li>
+	<li id="menu-item-3740" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3740"><a href="https://ongxuanhong.wordpress.com/category/kien-thuc/deep-learning/">Deep learning</a></li>
+	<li id="menu-item-8329" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-8329"><a href="https://ongxuanhong.wordpress.com/category/kien-thuc/xu-ly-ngon-ngu-tu-nhien-natural-language-processing-nlp/">Xử lý ngôn ngữ tự nhiên – Natural Language Processing (NLP)</a></li>
+	<li id="menu-item-2412" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2412"><a href="https://ongxuanhong.wordpress.com/category/kien-thuc/getting-and-cleaning-data/">Getting and cleaning data</a></li>
+	<li id="menu-item-2409" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2409"><a href="https://ongxuanhong.wordpress.com/category/kien-thuc/exploratory-data-analysis/">Exploratory Data Analysis</a></li>
+	<li id="menu-item-2408" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2408"><a href="https://ongxuanhong.wordpress.com/category/kien-thuc/statistical-inference/">Statistical Inference</a></li>
+</ul>
+</li>
+<li id="menu-item-2410" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2410"><a class="dropdown-link" href="https://ongxuanhong.wordpress.com/category/cong-cu/">Công cụ</a>
+<ul class="sub-menu">
+	<li id="menu-item-1067" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1067"><a href="https://ongxuanhong.wordpress.com/category/cong-cu/r/">R</a></li>
+	<li id="menu-item-1066" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1066"><a href="https://ongxuanhong.wordpress.com/category/cong-cu/python/">Python</a></li>
+	<li id="menu-item-2376" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2376"><a href="https://ongxuanhong.wordpress.com/category/cong-cu/weka/">Weka</a></li>
+	<li id="menu-item-2903" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2903"><a href="https://ongxuanhong.wordpress.com/category/cong-cu/big-data/">Big Data</a></li>
+</ul>
+</li>
+<li id="menu-item-359" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-359"><a href="https://ongxuanhong.wordpress.com/category/chia-se/">Chia sẻ</a></li>
+<li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="https://ongxuanhong.wordpress.com/about/">About</a></li>
+</ul></div>				</nav><!-- #site-navigation -->
+			
+					</div><!-- .wrapper -->
+			</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			
+				
+<article id="post-8358" class="post-8358 post type-post status-publish format-standard hentry category-kien-thuc category-xu-ly-ngon-ngu-tu-nhien-natural-language-processing-nlp">
+	
+	<header class="entry-header">
+		<div class="entry-meta">
+			<span class="posted-on"><a href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/" rel="bookmark"><time class="entry-date published updated" datetime="2016-09-02T09:17:11+00:00">Tháng Chín 2, 2016</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="https://ongxuanhong.wordpress.com/author/ongxuanhong/">Ông Xuân Hồng</a></span></span> 		</div><!-- .entry-meta -->
+
+		<h1 class="entry-title">Gán nhãn từ loại (Part-of-Speech tagging&nbsp;POS)</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<figure data-shortcode="caption" id="attachment_3296" style="width: 700px" class="wp-caption aligncenter"><a href="https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg"><img data-attachment-id="3296" data-permalink="https://ongxuanhong.wordpress.com/2015/09/28/natural-language-processing-mindmap/tagging-problem/" data-orig-file="https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=700&amp;h=484" data-orig-size="1200,829" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;5.6&quot;,&quot;credit&quot;:&quot;ONG XUAN HONG&quot;,&quot;camera&quot;:&quot;Canon EOS 650D&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;This is Lucky's copyright.&quot;,&quot;focal_length&quot;:&quot;55&quot;,&quot;iso&quot;:&quot;400&quot;,&quot;shutter_speed&quot;:&quot;0.04&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="Tagging problem" data-image-description="&lt;p&gt;Tagging problem&lt;/p&gt;
+" data-medium-file="https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=700&amp;h=484?w=300" data-large-file="https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=700&amp;h=484?w=700" class="size-full wp-image-3296" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/tagging-problem.jpg" alt="Tagging problem" srcset="https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=700&amp;h=484 700w, https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=150&amp;h=104 150w, https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=300&amp;h=207 300w, https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=768&amp;h=531 768w, https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg?w=1024&amp;h=707 1024w, https://ongxuanhong.files.wordpress.com/2015/09/tagging-problem.jpg 1200w" sizes="(max-width: 700px) 100vw, 700px" height="484" width="700"></a><figcaption class="wp-caption-text">Tagging problem</figcaption></figure>
+<p>Trong nhiều tác vụ của Xử lý ngôn ngữ tự nhiên (XLNNTN), ta mong muốn
+ xây dựng được một mô hình mà chuỗi các quan sát đầu vào (từ, ngữ, 
+câu,…) đi kèm với chuỗi các nhãn đầu ra (từ loại, ranh giới ngữ, tên 
+thực thể,…) gọi là <em>pairs of sequences</em>.</p>
+<p>Gán nhãn từ loại (Part-of-speech tagging – POS) có lẽ là bài toán sớm
+ nhất được nghiên cứu và được mọi người biết đến khi nhập môn chuyên 
+ngành XLNNTN. Trong bài viết này, ta sẽ tìm hiểu về bài toán gán nhãn từ
+ loại, các hướng tiếp cận và thuật toán cơ bản để giải quyết vấn đề này.</p>
+<p><span id="more-8358"></span></p>
+<h2>Giới thiệu</h2>
+<p>Trong gán nhãn từ loại, mục tiêu của chúng ta khi đưa chuỗi đầu vào là một câu ví dụ như&nbsp;<em>“con ruồi đậu mâm xôi đậu”</em></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_061.png" alt="con\ ruoi\ dau\ mam\ xoi\ dau" title="con\ ruoi\ dau\ mam\ xoi\ dau" class="latex"></p>
+<p>thì chuỗi đầu ra sẽ là nhãn (tag sequence) được giống hàng tương ứng</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_058.png" alt="D\ N\ V\ N\ N\ N" title="D\ N\ V\ N\ N\ N" class="latex"></p>
+<p>Ở đây, D: determinator (định từ), N: noun (danh từ), V: verb (động 
+từ). Khi đó, ta có chuỗi các cặp từ và từ loại tương ứng như sau <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_068.png" alt="con/D \ ruoi/N \ dau/V \ mam/N \ xoi/N \ dau/N" title="con/D \ ruoi/N \ dau/V \ mam/N \ xoi/N \ dau/N" class="latex"></p>
+<p>Gán nhãn (sequence labeling problem, tagging problem) có các&nbsp;bài toán thường gặp</p>
+<ul>
+<li>POS tagging (gán nhãn từ loại). Là cơ sở phục vụ cho các bài toán về ngữ nghĩa cao hơn.</li>
+<li>Named-Entity recognition (gán nhãn tên thực thể). Ví dụ: bà ba [CON 
+NGUOI] bán bánh mì [THUC PHAM] ở phường mười ba [DIA DIEM]. Có giá trị 
+về mặt ngữ nghĩa ở mức trung bình, thường được dùng để phân lớp văn bản.</li>
+<li>Machine translation (dịch máy). Đầu vào là một câu của ngôn ngữ A, 
+đầu ra là câu của ngôn ngữ B tương ứng. Bài toán này từng rất cấp thiết 
+trong chiến tranh thế giới thứ 2, khi mà thông tin tình báo của địch cần
+ được dịch trong thời gian ngắn nhất, giúp cho các lãnh đạo có thể đưa 
+ra những chiến lược cấp thiết.</li>
+<li>Speech recognition (nhận diện tiếng nói). Đầu vào là âm thanh tiếng 
+nói, đầu ra là câu dạng văn bản. Ngày nay, theo thống kê của Apple, 
+người dùng thích sử dụng tiếng nói của mình để nhập văn bản hơn là cách 
+nhập dữ liệu bằng bàn phím như truyền thống, đồng thời tương tác giữa 
+người và máy theo cách này có tốc độ nhập liệu nhanh hơn.</li>
+</ul>
+<p>Khi làm việc với bài toán này ta sẽ đối mặt với hai thách thức chính</p>
+<ul>
+<li>Nhập nhằng (ambiguity): một từ có thể có nhiều từ loại, hay một từ có thể có nhiều nghĩa, Ví dụ “con ruồi <strong>đậu</strong> mâm xôi <strong>đậu</strong>“, từ <em>“đậu”</em> có lúc là động từ (hành động đậu lên một vật thể) hoặc có lúc là danh từ (tên của một loài thực vật).</li>
+<li>Trong thực tế, có nhiều từ không xuất hiện trong ngữ liệu huấn luyện
+ (training corpus) nên khi xây dựng mô hình gán nhãn sẽ gặp nhiều khó 
+khăn.</li>
+</ul>
+<p>Độ chính xác của mô hình gán nhãn phụ thuộc vào hai yếu tố</p>
+<ul>
+<li>Bản thân từ đó sẽ có xu hướng (xác suất lớn) về từ loại nào. Ví dụ từ <em>“đậu”</em> có xu hướng là động từ nhiều hơn là danh từ (phụ thuộc vào ngữ liệu đang xét).</li>
+<li>Ngữ cảnh trong câu. Ví dụ “con <strong>ruồi đậu</strong> mâm <strong>xôi đậu</strong>“. Từ <em>“đậu”</em> có xu hướng là động từ khi theo sau từ <strong><em>“ruồi”</em></strong> và từ <em>“đậu”</em> có xu hướng là danh từ khi theo sau từ <strong><em>“xôi”</em></strong>.</li>
+</ul>
+<h2>Generative Models, và The Noisy Channel Model</h2>
+<p>Để gán nhãn từ loại, ta sử dụng phương pháp học có giám sát 
+(supervised learning), cụ thể là xác suất liên hợp thường gọi là mô hình
+ sinh mẫu (Generative model).&nbsp;Hidden Markov Model là một trong 
+những mô hình thuộc phân nhóm này.</p>
+<p><strong>Supervised learning được định nghĩa như sau</strong></p>
+<p>Cho tập huấn luyện <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_054.png" alt="(x^{(1)}, y^{(1)})...(x^{(m)}, y^{(m)})" title="(x^{(1)}, y^{(1)})...(x^{(m)}, y^{(m)})" class="latex">, trong đó đầu vào gồm <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_098.png" alt="x^{(i)}" title="x^{(i)}" class="latex"> là mẫu quan sát, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_034.png" alt="y^{(i)}" title="y^{(i)}" class="latex"> là nhãn gán cho mẫu quan sát. Ta đặt <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_022.png" alt="X" title="X" class="latex"> là tập dữ liệu đầu vào, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_013.png" alt="Y" title="Y" class="latex"> là tập dữ liệu đầu ra. Nhiệm vụ của chúng ta là xây dựng được hàm <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_057.png" alt="f : X \to Y" title="f : X \to Y" class="latex"> ánh xạ <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex"> vào không gian <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_007.png" alt="f(x)" title="f(x)" class="latex">.</p>
+<p>Để tính hàm <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_007.png" alt="f(x)" title="f(x)" class="latex"> ta có thể sử dụng mô hình điều kiện <strong>conditional model</strong>. Đây là mô hình thường dùng trong tác vụ phân lớp. Ví dụ, cho vào một bức ảnh <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex">, xác định xem đây là ảnh con mèo hay con chó bằng nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_046.png" alt="y" title="y" class="latex"></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_027.png" alt="p(y|x)" title="p(y|x)" class="latex"></p>
+<p>Sau khi huấn luyện các tham số của mô hình. Ta cho dữ liệu đầu vào là <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex">, dữ liệu đầu ra sẽ được tính dựa theo công thức</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_094.png" alt="f(x) = arg \max_{y \in Y} p(y|x)" title="f(x) = arg \max_{y \in Y} p(y|x)" class="latex">.</p>
+<p>Một hướng tiếp cận khác là<strong>&nbsp;generative model</strong>, &nbsp;thay vì tính trực tiếp hàm&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_027.png" alt="p(y|x)" title="p(y|x)" class="latex"> ta tính xác suất hợp (joint probability)</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_006.png" alt="p(x, y)" title="p(x, y)" class="latex">.</p>
+<p>Hàm này được phân tích thành</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_088.png" alt="p(x, y) = p(y)p(x|y)" title="p(x, y) = p(y)p(x|y)" class="latex">.</p>
+<p>Trong đó</p>
+<ul>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_035.png" alt="p(y)" title="p(y)" class="latex"> là phân bố xác suất tiền nghiệm (prior probability distribution) của nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_046.png" alt="y" title="y" class="latex">.</li>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_020.png" alt="p(x|y)" title="p(x|y)" class="latex"> là&nbsp;khả năng&nbsp;phát sinh <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex"> khi cho trước nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_046.png" alt="y" title="y" class="latex">.</li>
+</ul>
+<p><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_035.png" alt="p(y)" title="p(y)" class="latex"> và&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_020.png" alt="p(x|y)" title="p(x|y)" class="latex">&nbsp;thường được gọi là noisy-channel. <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_020.png" alt="p(x|y)" title="p(x|y)" class="latex"> là một “channel”</p>
+<p>Khi cho dữ liệu test đầu vào&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex">, ta sẽ dự đoán nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_046.png" alt="y" title="y" class="latex"> như sau</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_063.png" alt="f(x) = arg \max_y p(y|x)&nbsp;= arg \max_y \frac{p(y)p(x|y)}{p(x)}" title="f(x) = arg \max_y p(y|x)&nbsp;= arg \max_y \frac{p(y)p(x|y)}{p(x)}" class="latex"></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_009.png" alt="f (x) = arg \max_{y\in Y} p(y)p(x|y)" title="f (x) = arg \max_{y\in Y} p(y)p(x|y)" class="latex"></p>
+<p>Quá trình phân tích ra <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_007.png" alt="f(x)" title="f(x)" class="latex"> từ dữ liệu đầu vào <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex">
+ được gọi là decoding&nbsp;problem. Tiếp theo, ta sẽ áp dụng generative 
+model vào bài toán gán nhãn gọi tên là Generative Tagging Model.</p>
+<h2>Generative Tagging Model</h2>
+<p><strong>Định nghĩa:</strong> giả sử ta có tập từ vựng <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_065.png" alt="V" title="V" class="latex"> và tập nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_096.png" alt="K" title="K" class="latex">. <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_049.png" alt="S" title="S" class="latex"> là tập tất cả các cặp sequence/tag-sequence <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_069.png" alt="&lt;x_1...x_n, y_1...y_n&gt;" title="&lt;x_1...x_n, y_1...y_n&gt;" class="latex"> sao cho <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_041.png" alt="n \ge 0, x_i \in V, i = 1...n" title="n \ge 0, x_i \in V, i = 1...n" class="latex"> và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_036.png" alt="y_i \in K, i = 1...n" title="y_i \in K, i = 1...n" class="latex">. Khi đó generative tagging model là một hàm <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_023.png" alt="p" title="p" class="latex"> sao cho</p>
+<ol>
+<li>Với mọi&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_081.png" alt="&lt;x_1...x_n, y_1...y_n&gt; \in S" title="&lt;x_1...x_n, y_1...y_n&gt; \in S" class="latex"></li>
+</ol>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_017.png" alt="p(x_1...x_n, y_1...y_n) \ge 0" title="p(x_1...x_n, y_1...y_n) \ge 0" class="latex"></p>
+<ol>
+<li>Và</li>
+</ol>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_030.png" alt="\sum_{&lt;x_1...x_n, y_1...y_n&gt; \in S} p(x_1...x_n, y_1...y_n) = 1" title="\sum_{&lt;x_1...x_n, y_1...y_n&gt; \in S} p(x_1...x_n, y_1...y_n) = 1" class="latex"></p>
+<p>Ta xây dựng ánh xạ từ câu <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex"> vào chuỗi nhãn (tag sequences) <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_038.png" alt="y_1...y_n" title="y_1...y_n" class="latex">. Với mọi <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex">, ta sẽ chọn ra chuỗi nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_038.png" alt="y_1...y_n" title="y_1...y_n" class="latex"> nào có giá trị xác suất cao nhất.</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_004.png" alt="f(x_1...x_n) = arg \max_{y_1...y_n} p(x_1...x_n,y_1...y_n)" title="f(x_1...x_n) = arg \max_{y_1...y_n} p(x_1...x_n,y_1...y_n)" class="latex"></p>
+<p>Để xây dựng được hàm này ta cần trả lời các câu hỏi sau:</p>
+<ol>
+<li>Làm sao tính được <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_050.png" alt="p(x_1...x_n, y_1...y_n)" title="p(x_1...x_n, y_1...y_n)" class="latex"> ?</li>
+<li>Ước lượng tham số cho mô hình như thế nào từ ngữ liệu huấn luyện?</li>
+<li>Làm sao tính được xác suất cực đại <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_002.png" alt="\max_{y_1...y_n} p(x_1...x_n,y_1...y_n)" title="\max_{y_1...y_n} p(x_1...x_n,y_1...y_n)" class="latex"></li>
+</ol>
+<h2>Trigram Hidden Markov Models (Trigram HMMs)</h2>
+<p>Ở câu hỏi đầu tiên, ta sẽ dùng trigram hidden Markov model. Mô hình này có hai tham số quan trọng là &nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_008.png" alt="q(s|u,v)" title="q(s|u,v)" class="latex"> và&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_099.png" alt="e(x|s)" title="e(x|s)" class="latex">. Khi cho trước&nbsp;tập hữu hạn từ vựng <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_065.png" alt="V" title="V" class="latex"> và nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_096.png" alt="K" title="K" class="latex">. Ta có:</p>
+<ul>
+<li>Với mọi trigram <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_080.png" alt="(u,v,s)" title="(u,v,s)" class="latex">, ta có <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_070.png" alt="s \in K \cup \{STOP\}" title="s \in K \cup \{STOP\}" class="latex">, và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_005.png" alt="u, v \in K \cup \{*\}" title="u, v \in K \cup \{*\}" class="latex">.&nbsp;&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_008.png" alt="q(s|u,v)" title="q(s|u,v)" class="latex"> là khả năng nhìn thấy nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_010.png" alt="s" title="s" class="latex"> ngay sau bigram nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_082.png" alt="(u,v)" title="(u,v)" class="latex">.</li>
+<li>Với mọi <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_089.png" alt="x \in V, s \in K" title="x \in V, s \in K" class="latex">. &nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_099.png" alt="e(x|s)" title="e(x|s)" class="latex"> là khả năng của quan sát (observation/từ trong câu) <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex"> đi với nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_010.png" alt="s" title="s" class="latex"> (state).</li>
+</ul>
+<p>Với <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_049.png" alt="S" title="S" class="latex"> là tập tất cả các cặp chuỗi quan sát/nhãn (sequence/tag-sequence pairs) <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_015.png" alt="&lt;x_1...x_n, y_1...y_{n+1}&gt;" title="&lt;x_1...x_n, y_1...y_{n+1}&gt;" class="latex">. Khi đó, xác suất&nbsp;cặp chuỗi quan sát/nhãn được xác định như sau</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_093.png" alt="p(x_1...x_n, y_1...y_{n+1}) = \prod_{i=1}^{n+1} q(y_i|y_{i-2}, y_{i-1}) \prod_{i=1}^n e(x_i|y_i)" title="p(x_1...x_n, y_1...y_{n+1}) = \prod_{i=1}^{n+1} q(y_i|y_{i-2}, y_{i-1}) \prod_{i=1}^n e(x_i|y_i)" class="latex"></p>
+<p>Lưu ý, ta đặt <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_040.png" alt="y_0 = y_{-1} = *" title="y_0 = y_{-1} = *" class="latex"></p>
+<p><strong>Ví dụ câu&nbsp;<em>“em ăn cơm”</em></strong></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_060.png" alt="p(x_1...x_n, y_1...y_{n+1}) = q(N|*,*) \times q(V|*,N) \times q(N|N,V) \times q(STOP|V,N) \times e(em|N) \times e(an|V) \times e(com|N)" title="p(x_1...x_n, y_1...y_{n+1}) = q(N|*,*) \times q(V|*,N) \times q(N|N,V) \times q(STOP|V,N) \times e(em|N) \times e(an|V) \times e(com|N)" class="latex"></p>
+<p>Đây là một ví dụ cho mô hình noisy-channel với</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_090.png" alt="q(N|*,*) \times q(V|*,N) \times q(N|N,V) \times q(STOP|V,N) " title="q(N|*,*) \times q(V|*,N) \times q(N|N,V) \times q(STOP|V,N) " class="latex"></p>
+<p>là xác suất tiền nghiệm nhìn thấy chuỗi nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_055.png" alt="N\ V\ N\ STOP" title="N\ V\ N\ STOP" class="latex">. Ở đây, ta áp dụng mô hình Markov bậc hai hay mô hình trigram vào trong câu. Và</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_101.png" alt="e(em|N) \times e(an|V) \times e(com|N) " title="e(em|N) \times e(an|V) \times e(com|N) " class="latex"></p>
+<p>là xác suất có điều kiện của <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_079.png" alt="p(em\ an\ com | N\ V\ N\ STOP)" title="p(em\ an\ com | N\ V\ N\ STOP)" class="latex">. Ta có thể thấy, đây chính là xác suất có điều kiện <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_020.png" alt="p(x|y)" title="p(x|y)" class="latex">, trong đó <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_052.png" alt="x" title="x" class="latex"> là câu <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_012.png" alt="em\ an\ com" title="em\ an\ com" class="latex"> và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_046.png" alt="y" title="y" class="latex"> là chuỗi nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_055.png" alt="N\ V\ N\ STOP" title="N\ V\ N\ STOP" class="latex"></p>
+<h2>Ước lượng tham số cho mô hình Trigram HMM</h2>
+<p>Trả lời cho câu hỏi thứ hai, ta sẽ ước lượng tham số của mô hình bằng phương pháp maximum-likelihood cho hai tham số&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_008.png" alt="q(s|u,v)" title="q(s|u,v)" class="latex"> và&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_099.png" alt="e(x|s)" title="e(x|s)" class="latex"> như sau</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_037.png" alt="q(s|u,v) = \frac{c(u,v,s)}{c(u,v)}" title="q(s|u,v) = \frac{c(u,v,s)}{c(u,v)}" class="latex"></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_042.png" alt="e(x|s) = \frac{c(s \leadsto x)}{s}" title="e(x|s) = \frac{c(s \leadsto x)}{s}" class="latex"></p>
+<p>Trong đó</p>
+<ul>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_097.png" alt="c(u, v, s)" title="c(u, v, s)" class="latex">&nbsp;là số lần xuất hiện trigram <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_051.png" alt="(u, v, s)" title="(u, v, s)" class="latex"> trong ngữ liệu huấn luyện.</li>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_024.png" alt="c(u, v)" title="c(u, v)" class="latex"> là số lần xuất hiện bigram&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_104.png" alt="(u, v)" title="(u, v)" class="latex"> trong ngữ liệu huấn luyện.</li>
+</ul>
+<p>Ví dụ ta ước lượng</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_011.png" alt="q(N|N,V) = \frac{c(N, V, N)}{c(N, V)}" title="q(N|N,V) = \frac{c(N, V, N)}{c(N, V)}" class="latex"></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_016.png" alt="e(com|N) = \frac{c(N \leadsto com)}{N}" title="e(com|N) = \frac{c(N \leadsto com)}{N}" class="latex"></p>
+<p>Trong trường hợp ta muốn “làm trơn” tham số để giải quyết vấn đề xuất hiện từ hiếm gặp, ta có thể thêm vào các thông số <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_048.png" alt="\lambda" title="\lambda" class="latex"> như bên dưới</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_025.png" alt="q(s|u,v)=\lambda_1 \times q_{ML}(s|u,v)&nbsp;+ \lambda_2 \times q_{ML} (s|v) &nbsp;+ \lambda_3 \times &nbsp;q_{ML}(s)" title="q(s|u,v)=\lambda_1 \times q_{ML}(s|u,v)&nbsp;+ \lambda_2 \times q_{ML} (s|v) &nbsp;+ \lambda_3 \times &nbsp;q_{ML}(s)" class="latex">.</p>
+<p>Trong đó, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_105.png" alt="q_{ML}" title="q_{ML}" class="latex"> là xác suất tính được dựa vào maximum-likelihood, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_075.png" alt="\lambda_1, \lambda_2, \lambda_3" title="\lambda_1, \lambda_2, \lambda_3" class="latex"> là thông số làm trơn thoả <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_019.png" alt="\lambda_1 \ge 0, \lambda_2 \ge 0, \lambda_3 \ge 0" title="\lambda_1 \ge 0, \lambda_2 \ge 0, \lambda_3 \ge 0" class="latex"> và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_059.png" alt="\lambda_1 + \lambda_2 + \lambda_3 = 1" title="\lambda_1 + \lambda_2 + \lambda_3 = 1" class="latex"></p>
+<h2>Decoding HMMs&nbsp;bằng thuật toán&nbsp;Viterbi</h2>
+<p>Giả sử ta có câu đầu&nbsp;vào là</p>
+<p style="text-align:center;">em ăn cơm</p>
+<p>với tập các từ loại <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_053.png" alt="K = \{N, V\}" title="K = \{N, V\}" class="latex">, ta có thể phát sinh các chuỗi nhãn như bên dưới</p>
+<p style="text-align:center;">N N N STOP<br>
+N N V STOP<br>
+N V V STOP<br>
+V V V STOP<br>
+…</p>
+<p>Như vậy, đối với câu gồm 3 từ, ta sẽ có tất cả <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_044.png" alt="2^3 = 8" title="2^3 = 8" class="latex"> các khả năng. Con số này sẽ bùng nổ khi số từ vựng và chuỗi từ ngày càng tăng.</p>
+<h3><strong>Ý tưởng thuật toán Viterbi</strong></h3>
+<p>Thay vì tính toán hết các trường hợp, ta có thể áp dụng phương pháp 
+quy hoạch động (dynamic programming) như thuật toán Viterbi với</p>
+<p><b>Đầu vào:</b>&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex"></p>
+<p><strong>Đầu ra:</strong> <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_014.png" alt="y_{-1}, y_0, y_1,...,y_n" title="y_{-1}, y_0, y_1,...,y_n" class="latex">. Trong đó, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_039.png" alt="k \in {1...n}, y_i \in K, i = 1...k" title="k \in {1...n}, y_i \in K, i = 1...k" class="latex"> và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_102.png" alt="y_{-1} = y_0 = *" title="y_{-1} = y_0 = *" class="latex"></p>
+<p>Xác suất có điều kiện của <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_085.png" alt="k" title="k" class="latex"> nhãn đầu tiên là</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_029.png" alt="r (y_{-1}, y_0, y_1, ..., y_k) = \prod_{i = 1}^k q(y_i|y_{i-2}, y_{i-1}) \prod_{i=1}^k e(x_i|y_i)" title="r (y_{-1}, y_0, y_1, ..., y_k) = \prod_{i = 1}^k q(y_i|y_{i-2}, y_{i-1}) \prod_{i=1}^k e(x_i|y_i)" class="latex"></p>
+<p>Như vậy công thức <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_095.png" alt="p(x_1...x_n, y_1...y_{n+1})" title="p(x_1...x_n, y_1...y_{n+1})" class="latex"> ban đầu sẽ thành</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_028.png" alt="p(x_1...x_n, y_1...y_{n+1}) = r(*,*, y_1,...,y_n) \times q(y_{n+1} | y_{n-1}, y_n)" title="p(x_1...x_n, y_1...y_{n+1}) = r(*,*, y_1,...,y_n) \times q(y_{n+1} | y_{n-1}, y_n)" class="latex"></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_043.png" alt="= r(*,*, y_1,...,y_n) \times q(y_{n+1} |&nbsp;STOP, y_n)" title="= r(*,*, y_1,...,y_n) \times q(y_{n+1} |&nbsp;STOP, y_n)" class="latex"></p>
+<p>Đặt <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_073.png" alt="K_k, k \in \{-1...n\}" title="K_k, k \in \{-1...n\}" class="latex"> là các giá trị có thể có của nhãn tại vị trí thứ <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_085.png" alt="k" title="k" class="latex">. Trong đó, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_083.png" alt="K_{-1} = K_0 = {*}" title="K_{-1} = K_0 = {*}" class="latex"> và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_071.png" alt="K_k = K, k \in \{1...n\}" title="K_k = K, k \in \{1...n\}" class="latex">.</p>
+<p>Tiếp theo, với mọi <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_064.png" alt="k \in \{1...n\}" title="k \in \{1...n\}" class="latex">, với mọi <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_066.png" alt="u \in K_{k-1}, v \in K_k" title="u \in K_{k-1}, v \in K_k" class="latex">, ta định nghĩa <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_067.png" alt="S(k, u, v)" title="S(k, u, v)" class="latex"> là tập các chuỗi <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_018.png" alt="y_{-1}, y_0, y_1, ..., y_k" title="y_{-1}, y_0, y_1, ..., y_k" class="latex"> sao cho <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_056.png" alt="y_{k-1} = u, y_k = v" title="y_{k-1} = u, y_k = v" class="latex"> và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_092.png" alt="y_i \in K_i, i \in \{-1...k\}" title="y_i \in K_i, i \in \{-1...k\}" class="latex">. Nói cách khác, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_067.png" alt="S(k, u, v)" title="S(k, u, v)" class="latex"> là tập tất cả chuỗi các nhãn có độ dài <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_085.png" alt="k" title="k" class="latex">, kết thúc là bigram <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_104.png" alt="(u, v)" title="(u, v)" class="latex">. Ta đi xây dựng công thức sau</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_072.png" alt="\pi (k, u, v) = max_{&lt;y_{-1}, y_0, y_1, ..., y_k&gt; \in S(k, u, v)} r (y_{-1}, y_0, y_1, ..., y_k)" title="\pi (k, u, v) = max_{&lt;y_{-1}, y_0, y_1, ..., y_k&gt; \in S(k, u, v)} r (y_{-1}, y_0, y_1, ..., y_k)" class="latex">.</p>
+<p>Trong đó, <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_076.png" alt="\pi (k, u, v)" title="\pi (k, u, v)" class="latex"> là xác suất cực đại mà ta thu được với chuỗi có độ dài <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_085.png" alt="k" title="k" class="latex">&nbsp;kết thúc là&nbsp;bigram <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_082.png" alt="(u,v)" title="(u,v)" class="latex">. Để tính hàm này, ta định nghĩa đệ quy với</p>
+<p><strong>Phần cơ sở</strong></p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_103.png" alt="\pi (0, *, *) = 1" title="\pi (0, *, *) = 1" class="latex"></p>
+<p><strong>Phần đệ quy</strong></p>
+<p>Với mọi <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_064.png" alt="k \in \{1...n\}" title="k \in \{1...n\}" class="latex">, với mọi <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_066.png" alt="u \in K_{k-1}, v \in K_k" title="u \in K_{k-1}, v \in K_k" class="latex">, ta định nghĩa hàm đệ quy</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_021.png" alt="\pi (k, u, v) = max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" title="\pi (k, u, v) = max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" class="latex"></p>
+<p>Như vậy, ta đã trả lời được câu hỏi thứ ba</p>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_100.png" alt="\max_{y_1...y_{n+1}} p(x_1...x_n, y_1...y_{n+1}) = \max_{u \in K_{n-1}, v \in K_n} (\pi (n, u, v) \times q(STOP|u,v))" title="\max_{y_1...y_{n+1}} p(x_1...x_n, y_1...y_{n+1}) = \max_{u \in K_{n-1}, v \in K_n} (\pi (n, u, v) \times q(STOP|u,v))" class="latex"></p>
+<p>Độ phức tạp tính toán của thuật toán này là <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_047.png" alt="O(n|K|^3)" title="O(n|K|^3)" class="latex">, tuyến tính theo độ dài <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_003.png" alt="n" title="n" class="latex">
+ của chuỗi và bằng lập phương số lượng nhãn. Nếu số lượng nhãn không quá
+ lớn, thuật toán này có thể đạt được độ phức tạp tuyến tính.</p>
+<p>Tiếp theo, ta sẽ mô tả bằng ngôn ngữ mã giả bằng hai thuật toán: 
+thuật toán đệ quy cơ bản và thuật toán đệ quy có con trỏ lần ngược (để 
+xác định chuỗi nhãn đang xét có xác suất là bao nhiêu).</p>
+<h3>Thuật toán đệ quy cơ bản</h3>
+<p><strong>Input</strong>: a sentence <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex">, parameters <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_074.png" alt="q(s|u, v)" title="q(s|u, v)" class="latex"> and <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_099.png" alt="e(x|s)" title="e(x|s)" class="latex">.</p>
+<p><strong>Definitions</strong>: Define <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_096.png" alt="K" title="K" class="latex"> to be the set of possible tags. Define&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex.png" alt="K_{-1} = K_0 = \{*\}" title="K_{-1} = K_0 = \{*\}" class="latex">,&nbsp;and <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_032.png" alt="K_k =K" title="K_k =K" class="latex"> for <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_087.png" alt="k=1...n" title="k=1...n" class="latex">.</p>
+<p><strong>Initialization</strong>: Set <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_103.png" alt="\pi (0, *, *) = 1" title="\pi (0, *, *) = 1" class="latex">.</p>
+<p><strong>Algorithm:</strong></p>
+<ul>
+<li>For <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_087.png" alt="k=1...n" title="k=1...n" class="latex">,
+<ul>
+<li>For <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_066.png" alt="u \in K_{k-1}, v \in K_k" title="u \in K_{k-1}, v \in K_k" class="latex">,
+<ul>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_021.png" alt="\pi (k, u, v) = max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" title="\pi (k, u, v) = max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" class="latex"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Return</strong> <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_077.png" alt="max_{u \in K_{n-1}, v \in K_n} (\pi (n, u, v) \times q(STOP|u, v))" title="max_{u \in K_{n-1}, v \in K_n} (\pi (n, u, v) \times q(STOP|u, v))" class="latex"></li>
+</ul>
+<h3>Thuật toán đệ quy có backward pointer</h3>
+<p><strong>Input</strong>: a sentence <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex">, parameters <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_074.png" alt="q(s|u, v)" title="q(s|u, v)" class="latex"> and <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_099.png" alt="e(x|s)" title="e(x|s)" class="latex">.</p>
+<p><strong>Definitions</strong>: Define <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_096.png" alt="K" title="K" class="latex"> to be the set of possible tags. Define&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex.png" alt="K_{-1} = K_0 = \{*\}" title="K_{-1} = K_0 = \{*\}" class="latex">,&nbsp;and <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_032.png" alt="K_k =K" title="K_k =K" class="latex"> for <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_087.png" alt="k=1...n" title="k=1...n" class="latex">.</p>
+<p><strong>Initialization</strong>: Set <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_103.png" alt="\pi (0, *, *) = 1" title="\pi (0, *, *) = 1" class="latex">.</p>
+<p><strong>Algorithm:</strong></p>
+<ul>
+<li>For <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_087.png" alt="k=1...n" title="k=1...n" class="latex">,
+<ul>
+<li>For <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_066.png" alt="u \in K_{k-1}, v \in K_k" title="u \in K_{k-1}, v \in K_k" class="latex">,
+<ul>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_021.png" alt="\pi (k, u, v) = max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" title="\pi (k, u, v) = max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" class="latex"></li>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_086.png" alt="bp(k, u, v) =&nbsp;arg max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" title="bp(k, u, v) =&nbsp;arg max_{w \in K_{k-2}} (\pi (k-1, w, u) \times q(v|w, u) \times e(x_k|v))" class="latex"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Set <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_026.png" alt="(y_{n-1}, y_n) = arg max_{u \in K_{n-1}, v \in K_n} (\pi(n, u, v) \times q(STOP|u, v))" title="(y_{n-1}, y_n) = arg max_{u \in K_{n-1}, v \in K_n} (\pi(n, u, v) \times q(STOP|u, v))" class="latex"></li>
+<li>For <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_045.png" alt="k = (n-2)...1" title="k = (n-2)...1" class="latex">,
+<ul>
+<li><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_031.png" alt="y_k = bp(k+2, y_{k+1}, y_{k+2})" title="y_k = bp(k+2, y_{k+1}, y_{k+2})" class="latex"></li>
+</ul>
+</li>
+<li><strong>Return</strong>&nbsp;the tag sequence <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_038.png" alt="y_1...y_n" title="y_1...y_n" class="latex"></li>
+</ul>
+<h2>Kết</h2>
+<p>Như vậy, ta đã tìm hiểu được thế nào là bài toán gán nhãn từ 
+loại,&nbsp;các hướng tiếp cận và thuật toán để giải quyết vấn đề này. 
+Một số điểm cần nhớ</p>
+<ul>
+<li>Trigram HMM có hai tham số quan trọng là <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_074.png" alt="q(s|u, v)" title="q(s|u, v)" class="latex"> và <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_099.png" alt="e(x|s)" title="e(x|s)" class="latex"> để định nghĩa lên mô hình cho chuỗi đầu vào là <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex"> và chuỗi nhãn tương ứng là <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_084.png" alt="y_1...y_{n+1}" title="y_1...y_{n+1}" class="latex">, với&nbsp;<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_078.png" alt="y_{n+1} = STOP" title="y_{n+1} = STOP" class="latex">.</li>
+</ul>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_093.png" alt="p(x_1...x_n, y_1...y_{n+1}) = \prod_{i=1}^{n+1} q(y_i|y_{i-2}, y_{i-1}) \prod_{i=1}^n e(x_i|y_i)" title="p(x_1...x_n, y_1...y_{n+1}) = \prod_{i=1}^{n+1} q(y_i|y_{i-2}, y_{i-1}) \prod_{i=1}^n e(x_i|y_i)" class="latex"></p>
+<ul>
+<li>Khi cho trước ngữ liệu huấn luyện, ta có thể ước lượng maximum-likelihood cho hai tham số trên</li>
+</ul>
+<p style="text-align:center;"><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_037.png" alt="q(s|u,v) = \frac{c(u,v,s)}{c(u,v)}" title="q(s|u,v) = \frac{c(u,v,s)}{c(u,v)}" class="latex"><br>
+<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_091.png" alt="e(x|s) = \frac{c(s \leadsto x)}{(c(s)}" title="e(x|s) = \frac{c(s \leadsto x)}{(c(s)}" class="latex"></p>
+<ul>
+<li>Khi cho một câu test đầu vào <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex"> và tham số <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_033.png" alt="q, e" title="q, e" class="latex"> được ước lượng trong quá trình huấn luyện, ta có thể xác định được xác suất cực đại của chuỗi nhãn <img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/latex_062.png" alt="x_1...x_n" title="x_1...x_n" class="latex"> thông qua thuật toán Viterbi.</li>
+</ul>
+<p><strong>Nguồn tham khảo</strong></p>
+<ul>
+<li><a href="http://www.cs.columbia.edu/%7Emcollins/hmms-spring2013.pdf">Tagging Problems, and Hidden Markov Models</a></li>
+<li><a href="http://www.jaist.ac.jp/%7Ebao/VLSP-text/ICTrda08/ICT08-VLSP-SP83.pdf">Gán nhãn từ loại tiếng Việt dựa trên các phương pháp học máy thống kê</a></li>
+<li><a href="http://www.jaist.ac.jp/%7Ebao/VLSP-text/Mar2009/SP83-Baocaokythuat2009thang3.pdf">JVnTagger: Công cụ gán nhãn từ loại tiếng Việt dựa trên Conditional Random Fields và Maximum Entropy</a></li>
+<li><a href="http://www.vnulib.edu.vn:8000/dspace/bitstream/123456789/1801/1/sedev0206-02.pdf">Gán nhãn từ loạI cho tiếng việt dựa trên văn phong và tính toán xác suất</a></li>
+<li><a href="http://lrc.tnu.edu.vn/upload/collection/brief/36031_171201315202339.pdf">Gán nhãn từ loạI tiếng việt sử dụng mô hình markov ẩn</a></li>
+<li><a href="http://www.vietlex.com/images/tulieu/ITCra03POSTagging.pdf">Sử dụng bộ gán nhãn từ loạI xác suất qtag cho văn bản tiếng việt</a></li>
+</ul>
+		<div class="wpcnt">
+			<div style="display: inline-block ! important;" class="wpa wpmrec">
+				<a class="wpa-about" href="https://en.support.wordpress.com/about-these-ads/" rel="nofollow">Về quảng cáo</a>
+				        <div id="crt-1697127218" style="width: 300px; height: 250px; display: none;"></div>
+        <script type="text/javascript">
+        var o = document.getElementById('crt-1697127218');
+        if ("undefined"!=typeof Criteo) {
+            var p = o.parentNode;
+            p.style.setProperty('display', 'inline-block', 'important');
+            o.style.setProperty('display', 'block', 'important');
+            Criteo.DisplayAcceptableAdIfAdblocked({zoneid:388248,containerid:"crt-1697127218",collapseContainerIfNotAdblocked:true});
+        } else {
+            o.style.setProperty('display', 'none', 'important');
+        }
+        </script>
+				<div class="u">
+					<script type="text/javascript">
+					(function(g){if("undefined"!=typeof g.__ATA){g.__ATA.initAd({sectionId:26942, width:300, height:250});}})(window);
+					</script><div id="automattic-id-2829" data-section="26942" style="width:300px; height:250px;"><iframe src="javascript:&quot;<html><body style='background:transparent;margin:0%;'></body></html>&quot;" id="fif_slot_automattic-id-_automattic-id-2829" name="fif_slot_automattic-id-_automattic-id-2829" scrolling="no" style="border:none;width:300px;height:250px;" frameborder="0" height="250" width="300"></iframe></div>
+				</div>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-8358" class="share-facebook sd-button share-icon" href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/?share=facebook&amp;nb=1" target="_blank" title="Share on Facebook"><span>Facebook<span class="share-count">1</span></span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-8358" class="share-twitter sd-button share-icon" href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-8358" class="share-google-plus-1 sd-button share-icon" href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-8358" class="share-linkedin sd-button share-icon" href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/?share=linkedin&amp;nb=1" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-42320789-8358-5877c4c8a913b" data-src="//widgets.wp.com/likes/#blog_id=42320789&amp;post_id=8358&amp;origin=ongxuanhong.wordpress.com&amp;obj_id=42320789-8358-5877c4c8a913b" data-name="like-post-frame-42320789-8358-5877c4c8a913b"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Đang tải...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-42320789-8358-5877c4c8a913b" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_002.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-visual"><div class="jp-relatedposts-post jp-relatedposts-post0 jp-relatedposts-post-thumbs" data-post-id="6947" data-post-format="false"><a data-position="0" data-origin="8358" rel="nofollow" title="Các thuật ngữ trong Xử lý ngôn ngữ tự nhiên
+
+Vai trò của Xử lý ngôn ngữ tự nhiên-XLNNTN (Natural Language Processing-NLP) trong khai thác Big Data là không thể phủ nhận trong bối cảnh phát triển của doanh nghiệp hiện nay. Đối với ngôn ngữ tiếng Anh,&nbsp;ta đã được kế thừa nhiều tri thức cũng như nhiều công cụ…" href="https://ongxuanhong.wordpress.com/2016/02/05/cac-thuat-ngu-trong-xu-ly-ngon-ngu-tu-nhien/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/natural-language-processing.jpg" alt="Các thuật ngữ trong Xử lý ngôn ngữ tự nhiên" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="0" data-origin="8358" rel="nofollow" title="Các thuật ngữ trong Xử lý ngôn ngữ tự nhiên
+
+Vai trò của Xử lý ngôn ngữ tự nhiên-XLNNTN (Natural Language Processing-NLP) trong khai thác Big Data là không thể phủ nhận trong bối cảnh phát triển của doanh nghiệp hiện nay. Đối với ngôn ngữ tiếng Anh,&nbsp;ta đã được kế thừa nhiều tri thức cũng như nhiều công cụ…" href="https://ongxuanhong.wordpress.com/2016/02/05/cac-thuat-ngu-trong-xu-ly-ngon-ngu-tu-nhien/" class="jp-relatedposts-post-a">Các thuật ngữ trong Xử lý ngôn ngữ tự nhiên</a></h4><p class="jp-relatedposts-post-excerpt">Vai
+ trò của Xử lý ngôn ngữ tự nhiên-XLNNTN (Natural Language 
+Processing-NLP) trong khai thác Big Data là không thể phủ nhận trong bối
+ cảnh phát triển của doanh nghiệp hiện nay. Đối với ngôn ngữ tiếng 
+Anh,&nbsp;ta đã được kế thừa nhiều tri thức cũng như nhiều công cụ…</p><p class="jp-relatedposts-post-context">In "Kiến thức"</p></div><div class="jp-relatedposts-post jp-relatedposts-post1 jp-relatedposts-post-thumbs" data-post-id="7202" data-post-format="false"><a data-position="1" data-origin="8358" rel="nofollow" title="Áp dụng Convolutional Neural Networks cho Xử lý ngôn ngữ tự nhiên
+
+Ở bài viết trước, ta đã tìm hiểu về mô hình Convolutional Neural Networks (CNNs) ứng dụng như thế nào trong Thị giác máy tính (Computer Vision). Trong phần này, tôi xin tiếp tục bài viết của mình về cách làm thế nào để ứng dụng CNNs vào xử lý…" href="https://ongxuanhong.wordpress.com/2016/01/13/ap-dung-convolutional-neural-networks-cho-xu-ly-ngon-ngu-tu-nhien/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/illustration-of-a-convolutional-neural-network-cnn-e14521302.png" alt="Áp dụng Convolutional Neural Networks cho Xử lý ngôn ngữ tự nhiên" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="1" data-origin="8358" rel="nofollow" title="Áp dụng Convolutional Neural Networks cho Xử lý ngôn ngữ tự nhiên
+
+Ở bài viết trước, ta đã tìm hiểu về mô hình Convolutional Neural Networks (CNNs) ứng dụng như thế nào trong Thị giác máy tính (Computer Vision). Trong phần này, tôi xin tiếp tục bài viết của mình về cách làm thế nào để ứng dụng CNNs vào xử lý…" href="https://ongxuanhong.wordpress.com/2016/01/13/ap-dung-convolutional-neural-networks-cho-xu-ly-ngon-ngu-tu-nhien/" class="jp-relatedposts-post-a">Áp dụng Convolutional Neural Networks cho Xử lý ngôn ngữ tự nhiên</a></h4><p class="jp-relatedposts-post-excerpt">Ở
+ bài viết trước, ta đã tìm hiểu về mô hình Convolutional Neural Networks
+ (CNNs) ứng dụng như thế nào trong Thị giác máy tính (Computer Vision). 
+Trong phần này, tôi xin tiếp tục bài viết của mình về cách làm thế nào 
+để ứng dụng CNNs vào xử lý…</p><p class="jp-relatedposts-post-context">In "Deep learning"</p></div><div class="jp-relatedposts-post jp-relatedposts-post2 jp-relatedposts-post-thumbs" data-post-id="8331" data-post-format="false"><a data-position="2" data-origin="8358" rel="nofollow" title="Language Modeling là gì
+
+Trong bài viết này, ta sẽ tìm hiểu thế nào là một mô hình ngôn ngữ (language modeling). Làm sao để xây dựng được một mô hình ngôn ngữ từ tập các mẫu câu của một ngôn ngữ bất kỳ (Anh, Việt, Nhật, ...). Mô hình ngôn ngữ ban đầu…" href="https://ongxuanhong.wordpress.com/2016/08/27/language-modeling-la-gi/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/unigram.png" alt="Language Modeling là gì" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="2" data-origin="8358" rel="nofollow" title="Language Modeling là gì
+
+Trong bài viết này, ta sẽ tìm hiểu thế nào là một mô hình ngôn ngữ (language modeling). Làm sao để xây dựng được một mô hình ngôn ngữ từ tập các mẫu câu của một ngôn ngữ bất kỳ (Anh, Việt, Nhật, ...). Mô hình ngôn ngữ ban đầu…" href="https://ongxuanhong.wordpress.com/2016/08/27/language-modeling-la-gi/" class="jp-relatedposts-post-a">Language Modeling là gì</a></h4><p class="jp-relatedposts-post-excerpt">Trong
+ bài viết này, ta sẽ tìm hiểu thế nào là một mô hình ngôn ngữ (language 
+modeling). Làm sao để xây dựng được một mô hình ngôn ngữ từ tập các mẫu 
+câu của một ngôn ngữ bất kỳ (Anh, Việt, Nhật, ...). Mô hình ngôn ngữ ban
+ đầu…</p><p class="jp-relatedposts-post-context">In "Kiến thức"</p></div></div></div></div>			</div><!-- .entry-content -->
+
+	<div class="entry-footer">
+		<span class="cat-links">Posted in <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/" rel="category tag">Kiến thức</a>, <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/xu-ly-ngon-ngu-tu-nhien-natural-language-processing-nlp/" rel="category tag">Xử lý ngôn ngữ tự nhiên - Natural Language Processing (NLP)</a></span><span class="comments-link"><a href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/#comments">1 Phản hồi</a></span>	</div><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+					<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Điều hướng bài viết</h1>
+		<div class="nav-links">
+			<a href="https://ongxuanhong.wordpress.com/2016/08/27/language-modeling-la-gi/" rel="prev"><span class="meta-nav">Previous Post</span>Language Modeling là&nbsp;gì</a><a href="https://ongxuanhong.wordpress.com/2016/09/04/data-scientists-nen-xem-gi/" rel="next"><span class="meta-nav">Next Post</span>Data Scientists nên xem&nbsp;gì</a>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+				
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			One thought on “<span>Gán nhãn từ loại (Part-of-Speech tagging&nbsp;POS)</span>”		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-296" class="pingback even thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="https://ongxuanhong.wordpress.com/2016/09/16/long-short-term-memory-lstm/" rel="external nofollow" class="url">Long short-term memory (LSTM) | Ông Xuân Hồng</a> 			</div>
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+					<div id="respond" class="comment-respond js">
+			<h3 id="reply-title" class="comment-reply-title">Gửi phản hồi <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/#respond" style="display:none;">Hủy trả lời</a></small></h3>				<form action="https://ongxuanhong.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="ac50c21d5c" type="hidden"><input name="_wp_http_referer" value="/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="guest" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea class="autosizejs " tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: &quot;Open Sans&quot;,sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none; word-spacing: 0px; text-indent: 0px; line-height: 19px; width: 678px;">Mời bạn bình luận ...</textarea><textarea style="height: 125px; overflow: hidden; word-wrap: break-word; resize: none;" placeholder="Mời bạn bình luận ..." id="comment" name="comment" title="Mời bạn bình luận ..."></textarea></div>
+</div>
+
+<div style="display: none;" id="comment-form-identity">
+
+	<div id="comment-form-nascar">
+		<p>Mời bạn điền thông tin vào ô dưới đây hoặc kích vào một biểu tượng để đăng nhập:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_003.html" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0" height="24" width="24"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Thư điện tử <span class="required">(yêu cầu)</span> <span class="nopublish">(Địa chỉ của bạn được giấu kín)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Tên <span class="required">(yêu cầu)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Trang web</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/ad516503a11cd5ca435acc9bb6523536.png" alt="WordPress.com Logo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> Bạn đang bình luận bằng tài khoản <span class="skimlinks-unlinked">WordPress.com</span> <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Thay đổi</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> Bạn đang bình luận bằng tài khoản Twitter <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Thay đổi</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> Bạn đang bình luận bằng tài khoản Facebook <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Thay đổi</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> Bạn đang bình luận bằng tài khoản Google+ <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Thay đổi</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Hủy bỏ</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div style="display: none;" id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog" style="display: inline;">Nhắc tôi khi có bài mới qua email.</label></p></div>
+
+
+
+
+<p style="display: none;" class="form-submit"><input name="submit" id="comment-submit" class="submit" value="Gửi bình luận" type="submit"> <input name="comment_post_ID" value="8358" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="810741c95d" type="hidden"></p>
+<input name="genseq" value="1484244168" type="hidden">
+<p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1484244170837" type="hidden"></form>
+					</div><!-- #respond -->
+		<div style="clear: both"></div>
+</div><!-- #comments -->
+
+			
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="search-2" class="widget widget_search"><h1 class="widget-title">Tìm bài viết</h1><form role="search" method="get" class="search-form" action="https://ongxuanhong.wordpress.com/">
+				<label>
+					<span class="screen-reader-text">Tìm kiếm:</span>
+					<input class="search-field" placeholder="Tìm kiếm …" name="s" type="search">
+				</label>
+				<input class="search-submit" value="Tìm kiếm" type="submit">
+			</form></aside><aside id="text-3" class="widget widget_text"><h1 class="widget-title">Danh ngôn mỗi tuần</h1>			<div class="textwidget"><p><img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/buddha.jpg"><br>
+CUỘC ĐỜI LÀ VÔ THƯỜNG<br>
+1. Vô thường và thiên tai:<br>
+Theo đạo Phật, thiên tai không do Thượng đế tạo ra, mà do quá trình sinh
+ trụ dị diệt tạo ra. Nhờ nỗ lực có phương pháp, con người có thể dự đoán
+ được tương lai nhằm khắc phục phần nào hậu quả của nó.<br>
+2. Vô thường và tận thế:<br>
+Tận thế là có thật (sinh, trụ, dị, diệt), nhưng còn rất lâu. Để làm chậm
+ quá trình này, con người cần phải phát triển trí tuệ để mở rộng lòng từ
+ bi, sống vì nhau để quả địa cầu này tiếp tục là mẹ của tất cả mọi sự 
+sống, trong đó có sự sống của con người.<br>
+3. Vô thường và sự chết chóc:<br>
+Vô thường do chết chóc thường làm người ta rơi vào trầm cảm nặng, lâu 
+dài nó trở thành một bệnh lý tâm thần, cuộc đời trở nên vô nghĩa, tuyệt 
+vọng. Chúng ta phải thực tập vô ngã để trở nên thản nhiên trước cái chết
+ để sáng suốt trong các hành động có giá trị thiết thực.<br>
+4. Tu tập trong vô thường:<br>
+a. Sau vô thường mọi sự vật được trở thành. Phần lớn chúng ta chỉ thấy ở
+ vô thường sự mất mát, khổ đau chứ không nhìn thấy sự phát triển, lớn 
+mạnh của vô thường.<br>
+b. Xử lý khổ đau của vô thường: làm chủ tâm mình trong hoàn cảnh vô 
+thường mà hầu như không có lựa chọn nào khác, thực tập vô ngã theo lời 
+Phật dạy, nhờ đó nhẹ nhàng thoát ra nỗi khổ tâm đang khống chế mình.<br>
+c. Phải độc lập với cái khổ đau của người thân, không được liên minh và 
+liên lụy, liên đới cảm xúc để khổ theo. Hãy điềm tĩnh, sáng suốt để giúp
+ người thân thoát ra khỏi khổ đau.<br>
+d. Quán tưởng và nhận thức tích cực. Rồi mọi thứ sẽ trôi qua, mọi sự bất
+ hạnh sẽ khép lại, “sau cơn mưa trời lại sáng” để bừng tỉnh trong vô 
+thường. Nhận thức được điều đó, chúng ta lạc quan hơn, năng động, tìm 
+các giải pháp để nỗi khổ đau không xảy ra một lần nào nữa trong tương 
+lai. Từ đó sẽ sống an vui, hạnh phúc trong mọi biến cố cuộc đời.<br>
+Sư phụ Nhật Từ</p>
+</div>
+		</aside><aside id="blog_subscription-2" class="widget widget_blog_subscription"><h1 class="widget-title"><label for="subscribe-field">Theo dõi Blog</label></h1>
+				<form action="https://subscribe.wordpress.com" method="post" accept-charset="utf-8" id="subscribe-blog">
+											<p>Nhận Email khi có bài viết mới</p>
+						<p><input name="email" style="width: 95%; padding: 1px 2px" placeholder="Enter your email address" id="subscribe-field" type="text"></p>
+					
+					<p>
+						<input name="action" value="subscribe" type="hidden">
+						<input name="blog_id" value="42320789" type="hidden">
+						<input name="source" value="https://ongxuanhong.wordpress.com/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/" type="hidden">
+						<input name="sub-type" value="widget" type="hidden">
+						<input name="redirect_fragment" value="blog_subscription-2" type="hidden">
+						<input id="_wpnonce" name="_wpnonce" value="b481e158b7" type="hidden">						<input value="Theo dõi" type="submit">
+					</p>
+				</form>
+			
+</aside><aside id="text-2" class="widget widget_text"><h1 class="widget-title">Liên hệ</h1>			<div class="textwidget"><div id="contact-form-widget-text-2">
+<form action="/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/#contact-form-widget-text-2" method="post" class="contact-form commentsblock">
+
+<div>
+		<label for="gwidget-text-2-email" class="grunion-field-label email">Email<span>(yêu cầu)</span></label>
+		<input name="gwidget-text-2-email" id="gwidget-text-2-email" class="email" required="" aria-required="true" type="email">
+	</div>
+
+<div>
+		<label for="contact-form-comment-gwidget-text-2-comment" class="grunion-field-label textarea">Comment<span>(yêu cầu)</span></label>
+		<textarea name="gwidget-text-2-comment" id="contact-form-comment-gwidget-text-2-comment" rows="20" class="textarea" required="" aria-required="true"></textarea>
+	</div>
+	<p class="contact-submit">
+		<input value="Gửi »" class="pushbutton-wide" type="submit">
+		<input name="contact-form-id" value="widget-text-2" type="hidden">
+		<input name="action" value="grunion-contact-form" type="hidden">
+	</p>
+</form>
+</div></div>
+		</aside><aside id="top-posts-2" class="widget widget_top-posts"><h1 class="widget-title">Top bài viết</h1><div class="widgets-grid-layout no-grav">
+					<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2015/10/11/gop-nhat-kinh-nghiem-lam-nghe-data-scientist/" title="Góp nhặt kinh nghiệm làm nghề Data scientist" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/top-12-interesting-careers-to-explore-in-bigdata-2016-final.jpg" alt="Góp nhặt kinh nghiệm làm nghề Data scientist" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2017/01/10/he-thong-recommend-bai-nhac/" title="Hệ thống recommend bài nhạc" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/song-recommendations.jpg" alt="Hệ thống recommend bài nhạc" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2016/07/06/machine-learning-cho-nguoi-bat-dau/" title="Machine Learning cho người bắt đầu" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/start-here.png" alt="Machine Learning cho người bắt đầu" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2017/01/06/tensorflow-thu-vien-code-deep-learning/" title="TensorFlow - thư viện code Deep Learning" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/tensorboard.png" alt="TensorFlow - thư viện code Deep Learning" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/about/" title="About" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/jaist.jpg" alt="About" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2015/12/29/convolutional-neural-networks-la-gi/" title="Convolutional Neural Networks là gì" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/convolution_schematic.gif" alt="Convolutional Neural Networks là gì" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2015/06/10/machine-learning-la-gi/" title="Machine learning là gì" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/supervised-classification.png" alt="Machine learning là gì" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2015/10/22/diem-qua-cac-thuat-toan-machine-learning-hien-dai/" title="Điểm qua các thuật toán Machine Learning hiện đại" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/modern-machine-learning-e1445490008937.jpg" alt="Điểm qua các thuật toán Machine Learning hiện đại" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2015/10/05/cach-xac-dinh-dang-bai-toan-trong-machine-learning/" title="Cách xác định bài toán trong Machine Learning" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/microsoft-azure-ml-algorithm-cheat-sheet.png" alt="Cách xác định bài toán trong Machine Learning" data-pin-nopin="true">
+						</a>
+											</div>
+									<div class="widget-grid-view-image">
+												<a href="https://ongxuanhong.wordpress.com/2015/10/04/machine-learning-tren-quora-hoi-gi-dap-nay/" title="Machine Learning trên Quora hỏi gì đáp nấy" class="bump-view" data-bump-view="tp">
+							<img src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/machine-learning-quora.jpg" alt="Machine Learning trên Quora hỏi gì đáp nấy" data-pin-nopin="true">
+						</a>
+											</div>
+				</div>
+</aside>		<aside id="recent-posts-4" class="widget widget_recent_entries">		<h1 class="widget-title">Bài viết mới</h1>		<ul>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2017/01/10/he-thong-recommend-bai-nhac/">Hệ thống recommend bài&nbsp;nhạc</a>
+							<span class="post-date">Tháng Một 10, 2017</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2017/01/06/tensorflow-thu-vien-code-deep-learning/">TensorFlow – thư viện code Deep&nbsp;Learning</a>
+							<span class="post-date">Tháng Một 6, 2017</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/12/03/sentiment-analysis-co-ban/">Sentiment Analysis cơ&nbsp;bản</a>
+							<span class="post-date">Tháng Mười Hai 3, 2016</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/11/11/python-snippet-linear-regression/">Python snippet: Linear&nbsp;regression</a>
+							<span class="post-date">Tháng Mười Một 11, 2016</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/11/03/python-snippet-thu-thap-du-lieu/">Python snippet: Thu thập dữ&nbsp;liệu</a>
+							<span class="post-date">Tháng Mười Một 3, 2016</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/10/26/command-line-thuong-dung/">Command line thường&nbsp;dùng</a>
+							<span class="post-date">Tháng Mười 26, 2016</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/10/19/python-snippet-visualizing/">Python snippet: Visualizing</a>
+							<span class="post-date">Tháng Mười 19, 2016</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/10/15/word-embedding/">Word embedding</a>
+							<span class="post-date">Tháng Mười 15, 2016</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/10/13/nhung-chuyen-gia-ban-nen-follow-trong-linh-vuc-data-science/">Những chuyên gia bạn nên follow trong lĩnh vực Data&nbsp;Science</a>
+							<span class="post-date">Tháng Mười 13, 2016</span>
+						</li>
+					<li>
+				<a href="https://ongxuanhong.wordpress.com/2016/09/24/topic-modeling-la-gi/">Topic Modeling là&nbsp;gì</a>
+							<span class="post-date">Tháng Chín 24, 2016</span>
+						</li>
+				</ul>
+		</aside>		<aside id="tag_cloud-2" class="widget widget_tag_cloud"><h1 class="widget-title"></h1><div style="overflow: hidden;"><a href="https://ongxuanhong.wordpress.com/category/cong-cu/big-data/" style="font-size: 163.19444444444%; padding: 1px; margin: 1px;" title="Big Data (28)">Big Data</a> <a href="https://ongxuanhong.wordpress.com/category/chia-se/" style="font-size: 275%; padding: 1px; margin: 1px;" title="Chia sẻ (74)">Chia sẻ</a> <a href="https://ongxuanhong.wordpress.com/category/cong-cu/" style="font-size: 262.84722222222%; padding: 1px; margin: 1px;" title="Công cụ (69)">Công cụ</a> <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/deep-learning/" style="font-size: 129.16666666667%; padding: 1px; margin: 1px;" title="Deep learning (14)">Deep learning</a> <a href="https://ongxuanhong.wordpress.com/category/du-an/" style="font-size: 126.73611111111%; padding: 1px; margin: 1px;" title="Dự án (13)">Dự án</a> <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/exploratory-data-analysis/" style="font-size: 124.30555555556%; padding: 1px; margin: 1px;" title="Exploratory Data Analysis (12)">Exploratory Data Analysis</a> <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/getting-and-cleaning-data/" style="font-size: 114.58333333333%; padding: 1px; margin: 1px;" title="Getting and cleaning data (8)">Getting and cleaning data</a> <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/" style="font-size: 221.52777777778%; padding: 1px; margin: 1px;" title="Kiến thức (52)">Kiến thức</a> <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/machine-learning/" style="font-size: 185.06944444444%; padding: 1px; margin: 1px;" title="Machine learning (37)">Machine learning</a> <a href="https://ongxuanhong.wordpress.com/category/cong-cu/python/" style="font-size: 134.02777777778%; padding: 1px; margin: 1px;" title="Python (16)">Python</a> <a href="https://ongxuanhong.wordpress.com/category/cong-cu/r/" style="font-size: 180.20833333333%; padding: 1px; margin: 1px;" title="R (35)">R</a> <a href="https://ongxuanhong.wordpress.com/category/cong-cu/scala/" style="font-size: 100%; padding: 1px; margin: 1px;" title="Scala (2)">Scala</a> <a href="https://ongxuanhong.wordpress.com/category/cong-cu/big-data/spark/" style="font-size: 107.29166666667%; padding: 1px; margin: 1px;" title="Spark (5)">Spark</a> <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/statistical-inference/" style="font-size: 117.01388888889%; padding: 1px; margin: 1px;" title="Statistical Inference (9)">Statistical Inference</a> <a href="https://ongxuanhong.wordpress.com/category/cong-cu/weka/" style="font-size: 104.86111111111%; padding: 1px; margin: 1px;" title="Weka (4)">Weka</a> <a href="https://ongxuanhong.wordpress.com/category/kien-thuc/xu-ly-ngon-ngu-tu-nhien-natural-language-processing-nlp/" style="font-size: 121.875%; padding: 1px; margin: 1px;" title="Xử lý ngôn ngữ tự nhiên - Natural Language Processing (NLP) (11)">Xử lý ngôn ngữ tự nhiên - Natural Language Processing (NLP)</a> </div></aside><aside id="gallery-2" class="widget widget-gallery">
+<div class="widget-gallery-slideshow carousel">
+<div id="widget-gallery-2-slideshow" class="slideshow-window jetpack-slideshow slideshow-black" data-trans="fade" data-autostart="1" data-gallery="[{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2016\/11\/heart-rate-during-conference-presentation-with-beta-blockers.png&quot;,&quot;id&quot;:&quot;9775&quot;,&quot;caption&quot;:&quot;heart-rate-during-conference-presentation-with-beta-blockers&quot;},{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2016\/09\/torture-the-data.jpg&quot;,&quot;id&quot;:&quot;8535&quot;,&quot;caption&quot;:&quot;Torture the data&quot;},{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2016\/11\/data-science-is-cooking.png&quot;,&quot;id&quot;:&quot;9953&quot;,&quot;caption&quot;:&quot;data-science-is-cooking&quot;},{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2016\/11\/ds_lifecycle.png&quot;,&quot;id&quot;:&quot;9954&quot;,&quot;caption&quot;:&quot;ds_lifecycle&quot;},{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2016\/12\/top-20-python-machine-learning-open-source-projects.png&quot;,&quot;id&quot;:&quot;10170&quot;,&quot;caption&quot;:&quot;top-20-python-machine-learning-open-source-projects&quot;},{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2016\/12\/visual-storytelling.png&quot;,&quot;id&quot;:&quot;10169&quot;,&quot;caption&quot;:&quot;visual-storytelling&quot;},{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2016\/12\/number-of-listed-authors.gif&quot;,&quot;id&quot;:&quot;10429&quot;,&quot;caption&quot;:&quot;number-of-listed-authors&quot;},{&quot;src&quot;:&quot;https:\/\/ongxuanhong.files.wordpress.com\/2017\/01\/temperature-compared-to-average.png&quot;,&quot;id&quot;:&quot;10960&quot;,&quot;caption&quot;:&quot;temperature-compared-to-average&quot;}]"><div style="position: absolute; top: 0px; left: 0px; z-index: 8; opacity: 0; display: none; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/heart-rate-during-conference-presentation-with-beta-blockers.png" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">heart-rate-during-conference-presentation-with-beta-blockers</div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 8; opacity: 0; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/torture-the-data.jpg" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">Torture the data</div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 8; opacity: 0; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/data-science-is-cooking.png" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">data-science-is-cooking</div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 8; opacity: 0; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/ds_lifecycle.png" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">ds_lifecycle</div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 8; opacity: 0; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/top-20-python-machine-learning-open-source-projects.png" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">top-20-python-machine-learning-open-source-projects</div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 8; opacity: 0; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/visual-storytelling.png" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">visual-storytelling</div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 8; opacity: 0; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/number-of-listed-authors.gif" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">number-of-listed-authors</div></div><div style="position: absolute; top: 0px; left: 0px; display: block; z-index: 9; opacity: 1; width: 274px; height: 207px;" class="slideshow-slide"><img alt="" title="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/temperature-compared-to-average.png" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption">temperature-compared-to-average</div></div><div class="slideshow-controls"><a href="#"></a><a href="#"></a><a href="#"></a></div></div>
+</div>
+</aside><aside id="archives-3" class="widget widget_archive"><h1 class="widget-title">Lưu trữ</h1>		<ul>
+			<li><a href="https://ongxuanhong.wordpress.com/2017/01/">Tháng Một 2017</a>&nbsp;(2)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/12/">Tháng Mười Hai 2016</a>&nbsp;(1)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/11/">Tháng Mười Một 2016</a>&nbsp;(2)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/10/">Tháng Mười 2016</a>&nbsp;(4)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/09/">Tháng Chín 2016</a>&nbsp;(5)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/08/">Tháng Tám 2016</a>&nbsp;(2)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/07/">Tháng Bảy 2016</a>&nbsp;(5)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/05/">Tháng Năm 2016</a>&nbsp;(1)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/04/">Tháng Tư 2016</a>&nbsp;(2)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/03/">Tháng Ba 2016</a>&nbsp;(3)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/02/">Tháng Hai 2016</a>&nbsp;(4)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2016/01/">Tháng Một 2016</a>&nbsp;(4)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2015/12/">Tháng Mười Hai 2015</a>&nbsp;(10)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2015/11/">Tháng Mười Một 2015</a>&nbsp;(17)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2015/10/">Tháng Mười 2015</a>&nbsp;(13)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2015/09/">Tháng Chín 2015</a>&nbsp;(21)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2015/08/">Tháng Tám 2015</a>&nbsp;(26)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2015/07/">Tháng Bảy 2015</a>&nbsp;(30)</li>
+	<li><a href="https://ongxuanhong.wordpress.com/2015/06/">Tháng Sáu 2015</a>&nbsp;(9)</li>
+		</ul>
+		</aside><aside id="categories-3" class="widget widget_categories"><h1 class="widget-title">Danh mục</h1><label class="screen-reader-text" for="cat">Danh mục</label><select name="cat" id="cat" class="postform">
+	<option selected="selected" value="-1">Chọn chuyên mục</option>
+	<option class="level-0" value="11401623">Công cụ&nbsp;&nbsp;(85)</option>
+	<option class="level-1" value="2075170">&nbsp;&nbsp;&nbsp;Big Data&nbsp;&nbsp;(28)</option>
+	<option class="level-2" value="63429">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spark&nbsp;&nbsp;(5)</option>
+	<option class="level-1" value="832">&nbsp;&nbsp;&nbsp;Python&nbsp;&nbsp;(16)</option>
+	<option class="level-1" value="10189">&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;(35)</option>
+	<option class="level-1" value="312256">&nbsp;&nbsp;&nbsp;Scala&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="1432759">&nbsp;&nbsp;&nbsp;Weka&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="1183836">Chia sẻ&nbsp;&nbsp;(74)</option>
+	<option class="level-0" value="12100">Dự án&nbsp;&nbsp;(13)</option>
+	<option class="level-0" value="1728117">Kiến thức&nbsp;&nbsp;(81)</option>
+	<option class="level-1" value="1131271">&nbsp;&nbsp;&nbsp;Deep learning&nbsp;&nbsp;(14)</option>
+	<option class="level-1" value="26619530">&nbsp;&nbsp;&nbsp;Exploratory Data Analysis&nbsp;&nbsp;(12)</option>
+	<option class="level-1" value="238597297">&nbsp;&nbsp;&nbsp;Getting and cleaning data&nbsp;&nbsp;(8)</option>
+	<option class="level-1" value="40978">&nbsp;&nbsp;&nbsp;Machine learning&nbsp;&nbsp;(37)</option>
+	<option class="level-1" value="9260757">&nbsp;&nbsp;&nbsp;Statistical Inference&nbsp;&nbsp;(9)</option>
+	<option class="level-1" value="531800418">&nbsp;&nbsp;&nbsp;Xử lý ngôn ngữ tự nhiên – Natural Language Processing (NLP)&nbsp;&nbsp;(11)</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			location.href = "https://ongxuanhong.wordpress.com/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</aside><aside id="blog-stats-2" class="widget widget_blog-stats"><h1 class="widget-title">Thống kê</h1>		<ul>
+			<li>157,547 hits</li>
+		</ul>
+		</aside><aside id="calendar-4" class="widget widget_calendar"><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>Tháng Chín 2016</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Thứ Hai">M</th>
+		<th scope="col" title="Thứ Ba">T</th>
+		<th scope="col" title="Thứ Tư">W</th>
+		<th scope="col" title="Thứ Năm">T</th>
+		<th scope="col" title="Thứ Sáu">F</th>
+		<th scope="col" title="Thứ Bảy">S</th>
+		<th scope="col" title="Chủ Nhật">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="https://ongxuanhong.wordpress.com/2016/08/">« Aug</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a href="https://ongxuanhong.wordpress.com/2016/10/">Oct »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="3" class="pad">&nbsp;</td><td>1</td><td><a href="https://ongxuanhong.wordpress.com/2016/09/02/" aria-label="Posts published on September 2, 2016">2</a></td><td>3</td><td><a href="https://ongxuanhong.wordpress.com/2016/09/04/" aria-label="Posts published on September 4, 2016">4</a></td>
+	</tr>
+	<tr>
+		<td>5</td><td>6</td><td><a href="https://ongxuanhong.wordpress.com/2016/09/07/" aria-label="Posts published on September 7, 2016">7</a></td><td>8</td><td>9</td><td>10</td><td>11</td>
+	</tr>
+	<tr>
+		<td>12</td><td>13</td><td>14</td><td>15</td><td><a href="https://ongxuanhong.wordpress.com/2016/09/16/" aria-label="Posts published on September 16, 2016">16</a></td><td>17</td><td>18</td>
+	</tr>
+	<tr>
+		<td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td><a href="https://ongxuanhong.wordpress.com/2016/09/24/" aria-label="Posts published on September 24, 2016">24</a></td><td>25</td>
+	</tr>
+	<tr>
+		<td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+		<td class="pad" colspan="2">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></aside><aside id="recent-comments-3" class="widget widget_recent_comments"><h1 class="widget-title">Phản hồi gần đây</h1>				<table class="recentcommentsavatar" cellpadding="0" cellspacing="0" border="0">
+					<tbody><tr><td title="Ông Xuân Hồng" class="recentcommentsavatartop" style="height:48px; width:48px;"><a href="https://ongxuanhong.wordpress.com/" rel="nofollow"><img id="grav-d693f50943d6866c861fc9e09ca9709c-0" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/d693f50943d6866c861fc9e09ca9709c.jpeg" class="avatar avatar-48 grav-hashed" height="48" width="48"></a></td><td class="recentcommentstexttop" style=""><a href="https://ongxuanhong.wordpress.com/" rel="nofollow">Ông Xuân Hồng</a> on <a href="https://ongxuanhong.wordpress.com/2015/10/05/cach-xac-dinh-dang-bai-toan-trong-machine-learning/#comment-474">Cách xác định bài toán trong M…</a></td></tr><tr><td title="Tuan" class="recentcommentsavatarend" style="height:48px; width:48px;"><img id="grav-bf7c0438d870b49a4e623ba4f9dfc211-0" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/bf7c0438d870b49a4e623ba4f9dfc211.png" class="avatar avatar-48 grav-hashed grav-hijack" height="48" width="48"></td><td class="recentcommentstextend" style="">Tuan on <a href="https://ongxuanhong.wordpress.com/2015/10/05/cach-xac-dinh-dang-bai-toan-trong-machine-learning/#comment-473">Cách xác định bài toán trong M…</a></td></tr><tr><td title="Ông Xuân Hồng" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://ongxuanhong.wordpress.com/" rel="nofollow"><img id="grav-d693f50943d6866c861fc9e09ca9709c-1" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/d693f50943d6866c861fc9e09ca9709c.jpeg" class="avatar avatar-48 grav-hashed" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://ongxuanhong.wordpress.com/" rel="nofollow">Ông Xuân Hồng</a> on <a href="https://ongxuanhong.wordpress.com/2017/01/10/he-thong-recommend-bai-nhac/#comment-472">Hệ thống recommend bài&nbsp;nh…</a></td></tr><tr><td title="Nguyễn Thành Thịnh" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://www.facebook.com/app_scoped_user_id/699507213559714/" rel="nofollow"><img id="grav-aba99f38fbe7b25a523ee67c9f1b5f18-0" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/aba99f38fbe7b25a523ee67c9f1b5f18.png" class="avatar avatar-48 grav-hashed" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://www.facebook.com/app_scoped_user_id/699507213559714/" rel="nofollow">Nguyễn Thành Thịnh</a> on <a href="https://ongxuanhong.wordpress.com/2017/01/10/he-thong-recommend-bai-nhac/#comment-471">Hệ thống recommend bài&nbsp;nh…</a></td></tr><tr><td title="donkey" class="recentcommentsavatarend" style="height:48px; width:48px;"><img id="grav-c625442c0cddf5600fe5a034f358d990-0" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/c625442c0cddf5600fe5a034f358d990.png" class="avatar avatar-48 grav-hashed grav-hijack" height="48" width="48"></td><td class="recentcommentstextend" style="">donkey on <a href="https://ongxuanhong.wordpress.com/2015/12/29/convolutional-neural-networks-la-gi/#comment-470">Convolutional Neural Networks…</a></td></tr><tr><td title="Hoang" class="recentcommentsavatarend" style="height:48px; width:48px;"><img id="grav-5cd524d215500782aa064be3fc714c50-0" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/5cd524d215500782aa064be3fc714c50.png" class="avatar avatar-48 grav-hashed grav-hijack" height="48" width="48"></td><td class="recentcommentstextend" style="">Hoang on <a href="https://ongxuanhong.wordpress.com/2016/10/19/python-snippet-visualizing/#comment-468">Python snippet: Visualizing</a></td></tr><tr><td title="Ông Xuân Hồng" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://ongxuanhong.wordpress.com/" rel="nofollow"><img id="grav-d693f50943d6866c861fc9e09ca9709c-2" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/d693f50943d6866c861fc9e09ca9709c.jpeg" class="avatar avatar-48 grav-hashed" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://ongxuanhong.wordpress.com/" rel="nofollow">Ông Xuân Hồng</a> on <a href="https://ongxuanhong.wordpress.com/2016/10/19/python-snippet-visualizing/#comment-467">Python snippet: Visualizing</a></td></tr><tr><td title="Hoang" class="recentcommentsavatarend" style="height:48px; width:48px;"><img id="grav-5cd524d215500782aa064be3fc714c50-1" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/5cd524d215500782aa064be3fc714c50.png" class="avatar avatar-48 grav-hashed grav-hijack" height="48" width="48"></td><td class="recentcommentstextend" style="">Hoang on <a href="https://ongxuanhong.wordpress.com/2016/10/19/python-snippet-visualizing/#comment-466">Python snippet: Visualizing</a></td></tr><tr><td title="Machine Learning cho người bắt đầu | Ông Xuân Hồng" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://ongxuanhong.wordpress.com/2016/07/06/machine-learning-cho-nguoi-bat-dau/" rel="nofollow"><img alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/509ae8987c7c487c58a99fb66d943189_002.jpeg" class="avatar avatar-48" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://ongxuanhong.wordpress.com/2016/07/06/machine-learning-cho-nguoi-bat-dau/" rel="nofollow">Machine Learning cho…</a> on <a href="https://ongxuanhong.wordpress.com/2016/10/26/command-line-thuong-dung/#comment-465">Command line thường&nbsp;dùng</a></td></tr><tr><td title="Machine Learning cho người bắt đầu | Ông Xuân Hồng" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://ongxuanhong.wordpress.com/2016/07/06/machine-learning-cho-nguoi-bat-dau/" rel="nofollow"><img alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/509ae8987c7c487c58a99fb66d943189_002.jpeg" class="avatar avatar-48" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://ongxuanhong.wordpress.com/2016/07/06/machine-learning-cho-nguoi-bat-dau/" rel="nofollow">Machine Learning cho…</a> on <a href="https://ongxuanhong.wordpress.com/2015/12/03/git-notes/#comment-464">Git notes</a></td></tr><tr><td title="Hoàng Nam Thắng – Hoàng Nam Thắng" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://thanghnblog.wordpress.com/2017/01/02/hoang-nam-thang/" rel="nofollow"><img alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/364c2e3b6cb66de9ee74d55035ba7dac.png" class="avatar avatar-48" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://thanghnblog.wordpress.com/2017/01/02/hoang-nam-thang/" rel="nofollow">Hoàng Nam Thắng…</a> on <a href="https://ongxuanhong.wordpress.com/2015/06/10/machine-learning-la-gi/#comment-462">Machine learning là&nbsp;gì</a></td></tr><tr><td title="Ông Xuân Hồng" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://ongxuanhong.wordpress.com/" rel="nofollow"><img id="grav-d693f50943d6866c861fc9e09ca9709c-3" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/d693f50943d6866c861fc9e09ca9709c.jpeg" class="avatar avatar-48 grav-hashed" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://ongxuanhong.wordpress.com/" rel="nofollow">Ông Xuân Hồng</a> on <a href="https://ongxuanhong.wordpress.com/2015/06/10/machine-learning-la-gi/#comment-461">Machine learning là&nbsp;gì</a></td></tr><tr><td title="Nguyễn Thành Thịnh" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://www.facebook.com/app_scoped_user_id/699507213559714/" rel="nofollow"><img alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/picture.jpeg" class="avatar avatar-48" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://www.facebook.com/app_scoped_user_id/699507213559714/" rel="nofollow">Nguyễn Thành Thịnh</a> on <a href="https://ongxuanhong.wordpress.com/2015/06/10/machine-learning-la-gi/#comment-460">Machine learning là&nbsp;gì</a></td></tr><tr><td title="Ông Xuân Hồng" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://ongxuanhong.wordpress.com/" rel="nofollow"><img id="grav-d693f50943d6866c861fc9e09ca9709c-4" alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/d693f50943d6866c861fc9e09ca9709c.jpeg" class="avatar avatar-48 grav-hashed" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://ongxuanhong.wordpress.com/" rel="nofollow">Ông Xuân Hồng</a> on <a href="https://ongxuanhong.wordpress.com/2015/06/10/machine-learning-la-gi/#comment-459">Machine learning là&nbsp;gì</a></td></tr><tr><td title="Nguyễn Thành Thịnh" class="recentcommentsavatarend" style="height:48px; width:48px;"><a href="https://www.facebook.com/app_scoped_user_id/699507213559714/" rel="nofollow"><img alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/picture.jpeg" class="avatar avatar-48" height="48" width="48"></a></td><td class="recentcommentstextend" style=""><a href="https://www.facebook.com/app_scoped_user_id/699507213559714/" rel="nofollow">Nguyễn Thành Thịnh</a> on <a href="https://ongxuanhong.wordpress.com/2015/06/10/machine-learning-la-gi/#comment-458">Machine learning là&nbsp;gì</a></td></tr>				</tbody></table>
+				</aside></div><!-- #secondary -->
+
+	</div><!-- #content -->
+
+	
+			<nav class="footer-navigation" role="navigation">
+			<div class="menu-footer"><ul id="menu-main-menu-1" class="clear"><li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-318"><a href="https://ongxuanhong.wordpress.com/category/du-an/">Dự án</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-2413"><a href="https://ongxuanhong.wordpress.com/category/kien-thuc/">Kiến thức</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2410"><a href="https://ongxuanhong.wordpress.com/category/cong-cu/">Công cụ</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-359"><a href="https://ongxuanhong.wordpress.com/category/chia-se/">Chia sẻ</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="https://ongxuanhong.wordpress.com/about/">About</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a href="https://vi.wordpress.com/?ref=footer_blog">Blog at WordPress.com.</a>
+			
+					</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!--  -->
+<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-d693f50943d6866c861fc9e09ca9709c">
+	</div>
+	<div class="grofile-hash-map-bf7c0438d870b49a4e623ba4f9dfc211">
+	</div>
+	<div class="grofile-hash-map-aba99f38fbe7b25a523ee67c9f1b5f18">
+	</div>
+	<div class="grofile-hash-map-c625442c0cddf5600fe5a034f358d990">
+	</div>
+	<div class="grofile-hash-map-5cd524d215500782aa064be3fc714c50">
+	</div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"\u0110\u0103ng b\u00ecnh lu\u1eadn\u2026","postCommentText":"G\u1eedi b\u00ecnh lu\u1eadn","connectingToText":"Connecting to %s","commentingAsText":"%1$s: B\u1ea1n \u0111ang b\u00ecnh lu\u1eadn b\u1eb1ng t\u00e0i kho\u1ea3n %2$s","logoutText":"\u0110\u0103ng xu\u1ea5t","loginText":"\u0110\u0103ng nh\u1eadp","connectURL":"https:\/\/ongxuanhong.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/ongxuanhong.wordpress.com\/wp-login.php?action=logout&_wpnonce=0711f7468d","homeURL":"https:\/\/ongxuanhong.wordpress.com\/","postID":"8358","gravDefault":"monsterid","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Thay \u0111\u1ed5i","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"0","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_003"></script>
+
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Hủy bỏ</a></span>
+				<input name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" type="submit">
+				<input id="carousel-reblog-blog-id" value="42320789" type="hidden">
+				<input id="carousel-reblog-blog-url" value="https://ongxuanhong.wordpress.com" type="hidden">
+				<input id="carousel-reblog-blog-title" value="Ông Xuân Hồng" type="hidden">
+				<input id="carousel-reblog-post-url" value="" type="hidden">
+				<input id="carousel-reblog-post-title" value="" type="hidden">
+			</div>
+
+			<input id="_wpnonce" name="_wpnonce" value="e59d374a16" type="hidden"><input name="_wp_http_referer" value="/2016/09/02/gan-nhan-tu-loai-part-of-speech-tagging-pos/" type="hidden">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/ongxuanhong.wordpress.com\/2016\/09\/02\/gan-nhan-tu-loai-part-of-speech-tagging-pos\/":8358};
+	</script>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-google-plus-1' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-linkedin' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+		});
+		</script>
+		<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/form.js"></script>
+<link rel="stylesheet" id="all-css-0-3" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/jetpack-carousel.css" type="text/css" media="all">
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='https://s1.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel-ie8fix.css?m=1412618825h&#038;ver=20121024' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="all-css-2-3" href="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_003.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var comment_like_text = {"loading":"\u0110ang t\u1ea3i..."};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"42320789","siteName":"\u00d4ng Xu\u00e2n H\u1ed3ng","siteURL":"http:\/\/ongxuanhong.wordpress.com","icon":"<img alt='' src='https:\/\/secure.gravatar.com\/blavatar\/509ae8987c7c487c58a99fb66d943189?s=36' class='avatar avatar-36' height='36' width='36' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/sequential","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/ongxuanhong.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F","themeURL":"https:\/\/wordpress.com\/themes\/sequential\/","xhrURL":"https:\/\/ongxuanhong.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"060466064d","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"b481e158b7\" \/>","referer":"https:\/\/ongxuanhong.wordpress.com\/2016\/09\/02\/gan-nhan-tu-loai-part-of-speech-tagging-pos\/","canFollow":"1","statusMessage":"","customizeLink":"https:\/\/ongxuanhong.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F","postID":"8358","shortlink":"http:\/\/wp.me\/p2Rzzn-2aO","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/ongxuanhong.wordpress.com\/8358","i18n":{"view":"View site","follow":"Theo d\u00f5i","following":"\u0110ang theo d\u00f5i","edit":"S\u1eeda","login":"\u0110\u0103ng nh\u1eadp","signup":"\u0110\u0103ng k\u00fd","customize":"T\u00f9y ch\u1ec9nh","report":"Report this content","themeInfo":"Get theme: Sequential","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editFollows":"Manage sites I follow","editSubs":"Manage subscriptions","viewReader":"View site in the Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 221 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/ongxuanhong.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F\">Log in now.<\/a>"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"vi","ajaxurl":"https:\/\/ongxuanhong.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"dfc00b55d3","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Ph\u1ea3n h\u1ed3i","post_comment":"G\u1eedi b\u00ecnh lu\u1eadn","write_comment":"Write a Comment...","loading_comments":"\u0110ang t\u1ea3i B\u00ecnh lu\u1eadn...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/ongxuanhong.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F","blog_id":"42320789","local_comments_commenting_as":"<fieldset><label for=\"email\">Th\u01b0 \u0111i\u1ec7n t\u1eed (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">T\u00ean (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Trang web<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=42320789&v=wpcom&tz=0&user_id=0&subd=ongxuanhong","is_public":"1","reblog_enabled":""};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackSlideshowSettings = {"spinner":"https:\/\/s1.wp.com\/wp-content\/mu-plugins\/shortcodes\/img\/slideshow-loader.gif","blog_id":"42320789","blog_subdomain":"ongxuanhong","user_id":"0"};
+var jetpackSlideshowSettings = {"spinner":"https:\/\/s1.wp.com\/wp-content\/mu-plugins\/shortcodes\/img\/slideshow-loader.gif","blog_id":"42320789","blog_subdomain":"ongxuanhong","user_id":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/a_002"></script><div class="actnbr-pub-sequential actnbr-has-follow actnbr-hidden" id="actionbar"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Theo dõi</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://ongxuanhong.wordpress.com/"><img alt="" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/509ae8987c7c487c58a99fb66d943189.jpeg" class="avatar avatar-36" height="36" width="36"> Ông Xuân Hồng</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://ongxuanhong.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Tùy chỉnh<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Theo dõi</span></a></li> 						<li class="actnbr-signup actnbr-hidden"><a href="https://wordpress.com/start/">Đăng ký</a></li> 				    <li class="actnbr-login actnbr-hidden"><a href="https://ongxuanhong.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fongxuanhong.wordpress.com%2F2016%2F09%2F02%2Fgan-nhan-tu-loai-part-of-speech-tagging-pos%2F">Đăng nhập</a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="http://wp.me/p2Rzzn-2aO">Copy shortlink</a></li> 				     				     				     				    <li class="actnbr-subs actnbr-hidden"><a href="https://subscribe.wordpress.com/">Manage subscriptions</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>	<script type="text/javascript">
+	var skimlinks_pub_id = "725X584219"
+	var skimlinks_sitename = "ongxuanhong.wordpress.com";
+	</script>
+	<script type="text/javascript" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/725X1342.js"></script>		<iframe src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		<script>
+			var _comscore = _comscore || [];
+			_comscore.push({
+				c1: "2",
+				c2: "7518284"
+			});
+			(function() {
+				var s = document.createElement("script"),
+					el = document.getElementsByTagName("script")[0];
+				s.async = true;
+				s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+				el.parentNode.insertBefore(s, el);
+			})();
+		</script>
+		<noscript>
+			<p class="robots-nocontent"><img src="https://sb.scorecardresearch.com/p?c1=2&c2=7518284&c3=&c4=&c5=&c6=&c15=&cv=2.0&cj=1" alt="" style="display:none;" width="1" height="1" /></p>
+		</noscript><script src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/w.js" type="text/javascript" async="" defer="defer"></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'42320789','blog_tz':'0','user_lang':'vi','blog_lang':'vi','user_id':'0'}]);
+_stq.push(['view', {'blog':'42320789','v':'wpcom','tz':'0','user_id':'0','post':'8358','subd':'ongxuanhong'}]);
+_stq.push(['extra', {'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdTdvUG14Q2VDQTR4LlUsLi82dU1mai9BMnMzSitqWkpxbS9HNGRUNXFENyt4LD0/NmlmSzZ0S0NuYW1zLFh4WWlFclRqU2s/aFpSMUwyWGFVTXctPSx4ZU9ZVldDal1tWGEtcDBDfFlTd3YmXzNvek5+c2JDUj0rLlNsY2dGdnBlUVEtPzBRdDUyWnFvOC1rflEyNElsJWprNHddJWRwM3IyVW9EJndNMD8xc0NneC5OfmpLMmgycWpBNn44OHFhbktlajFIWWlrfmV4Ukc0S0J+P21MRWhRLmVKZjdEaD94NEFUL0Qua2J1OGo4bk5QLEJdZW1TaXFpUmhpZ1ZbTGp1dyU/W1FzUHJLdFVUZWVQbWNuR0dvczdOaWNdflY0Ukp6RixoOUhtUGEmWmVVZmR0VFRtRmduajguUiZ0LVQ='}]);
+_stq.push([ 'clickTrackerInit', '42320789', '8358' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+<div style="display: none;" class="comment-likes-overlay"></div><img id="wpstats" alt=":)" src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/g.gif"><iframe src="G%C3%A1n%20nh%C3%A3n%20t%E1%BB%AB%20lo%E1%BA%A1i%20%28Part-of-Speech%20tagging%20POS%29%20%7C%20%C3%94ng%20Xu%C3%A2n%20H%E1%BB%93ng_files/passback.html" name="automattic-passback-receiver" style="position: absolute; left: -1000px; top: -1000px; border: 0px solid; width: 0px; height: 0px;" height="0" width="0"></iframe></body></html>

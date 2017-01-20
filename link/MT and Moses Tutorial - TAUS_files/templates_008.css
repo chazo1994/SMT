@@ -1,0 +1,185 @@
+.t3-megamenu .mega-inner {
+  padding: 10px 0;
+}
+.t3-megamenu .row {
+  margin-left: auto;
+  margin-right: auto;
+}
+.t3-megamenu .row + .row {
+  padding-top: 14px;
+  border-top: 1px solid #d9d9d9;
+}
+.t3-megamenu .mega-dropdown-menu {
+  padding: 14px 0;
+}
+.t3-megamenu .mega-dropdown-menu:after {
+  border-bottom: 10px solid #ffffff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: -10px;
+}
+.t3-megamenu .navbar-nav > li > .mega-dropdown-menu {
+  margin-top: 7px;
+}
+.t3-megamenu .mega-align-center > .dropdown-menu:after {
+  left: 50%;
+  margin-left: -10px;
+}
+.t3-megamenu .mega-align-right > .dropdown-menu:after {
+  left: auto;
+  right: 20px;
+}
+.t3-megamenu .dropdown-header,
+.t3-megamenu .mega-nav .mega-group > .dropdown-header,
+.t3-megamenu .dropdown-menu .mega-nav .mega-group > .dropdown-header,
+.t3-megamenu .dropdown-menu .active .mega-nav .mega-group > .dropdown-header {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #3498db;
+  font-size: 12px;
+  line-height: normal;
+  text-transform: uppercase;
+  padding-bottom: 0;
+  display: block;
+  font-weight: 700;
+}
+.t3-megamenu .dropdown-header:hover,
+.t3-megamenu .mega-nav .mega-group > .dropdown-header:hover,
+.t3-megamenu .dropdown-menu .mega-nav .mega-group > .dropdown-header:hover,
+.t3-megamenu .dropdown-menu .active .mega-nav .mega-group > .dropdown-header:hover,
+.t3-megamenu .dropdown-header:active,
+.t3-megamenu .mega-nav .mega-group > .dropdown-header:active,
+.t3-megamenu .dropdown-menu .mega-nav .mega-group > .dropdown-header:active,
+.t3-megamenu .dropdown-menu .active .mega-nav .mega-group > .dropdown-header:active,
+.t3-megamenu .dropdown-header:focus,
+.t3-megamenu .mega-nav .mega-group > .dropdown-header:focus,
+.t3-megamenu .dropdown-menu .mega-nav .mega-group > .dropdown-header:focus,
+.t3-megamenu .dropdown-menu .active .mega-nav .mega-group > .dropdown-header:focus {
+  background: inherit;
+  color: #3498db;
+}
+.t3-megamenu .dropdown-header:before,
+.t3-megamenu .mega-nav .mega-group > .dropdown-header:before,
+.t3-megamenu .dropdown-menu .mega-nav .mega-group > .dropdown-header:before,
+.t3-megamenu .dropdown-menu .active .mega-nav .mega-group > .dropdown-header:before {
+  display: none;
+}
+.t3-megamenu .dropdown-menu .divider {
+  background: none;
+  height: auto;
+  margin: 0;
+}
+.t3-megamenu .mega-group-ct .row {
+  margin-left: -40px;
+  margin-right: -40px;
+}
+.t3-megamenu .mega-nav > li.active > a,
+.t3-megamenu .dropdown-menu .mega-nav > li.active > a {
+  color: #3498db;
+}
+.t3-megamenu .mega-nav > li a,
+.t3-megamenu .dropdown-menu .mega-nav > li a {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  color: #333333;
+  display: inline-block;
+}
+.t3-megamenu .mega-nav > li a:hover,
+.t3-megamenu .dropdown-menu .mega-nav > li a:hover,
+.t3-megamenu .mega-nav > li a:focus,
+.t3-megamenu .dropdown-menu .mega-nav > li a:focus,
+.t3-megamenu .mega-nav > li a:active,
+.t3-megamenu .dropdown-menu .mega-nav > li a:active {
+  color: #3498db;
+  background: none;
+  position: relative;
+}
+.t3-megamenu .dropdown-menu .mega-nav > li .separator {
+  padding: 0;
+}
+.t3-megamenu .dropdown-menu .mega-group .mega-nav > li.active > a {
+  color: #3498db;
+  position: relative;
+}
+.t3-megamenu .mega-nav .dropdown-submenu > a:after {
+  margin-right: 0;
+}
+.t3-megamenu .t3-module {
+  margin-bottom: 0;
+}
+.t3-megamenu .t3-module div.finder {
+  margin-bottom: 0;
+}
+.t3-megamenu .t3-module #mod-finder-searchword {
+  -webkit-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+.t3-megamenu .t3-module .module-title {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #3498db;
+  font-size: 12px;
+  line-height: normal;
+  text-transform: uppercase;
+  padding-bottom: 0;
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.t3-megamenu .t3-module .module-title:hover,
+.t3-megamenu .t3-module .module-title:active,
+.t3-megamenu .t3-module .module-title:focus {
+  background: inherit;
+  color: #3498db;
+}
+.t3-megamenu .t3-module .module-title:before {
+  display: none;
+}
+.t3-megamenu .t3-module ul li,
+.t3-megamenu .t3-module .nav li {
+  list-style: disc;
+  display: list-item;
+  float: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.t3-megamenu .t3-module ul li a,
+.t3-megamenu .t3-module .nav li a {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+  background: none;
+  font: inherit;
+  white-space: normal;
+}
+.t3-megamenu .t3-module ul li a:hover,
+.t3-megamenu .t3-module .nav li a:hover,
+.t3-megamenu .t3-module ul li a:focus,
+.t3-megamenu .t3-module .nav li a:focus,
+.t3-megamenu .t3-module ul li a:active,
+.t3-megamenu .t3-module .nav li a:active {
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+.t3-megamenu .mega-caption {
+  color: #eeeeee;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: none;
+}
+.t3-megamenu .nav .input-group-addon [class^="icon-"],
+.t3-megamenu .nav .input-group-addon [class*=" icon-"],
+.t3-megamenu .nav .input-group-addon .fa {
+  margin-right: 0;
+}

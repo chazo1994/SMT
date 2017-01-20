@@ -1,0 +1,301 @@
+@media screen and (max-width: 991px) {
+  .navbar-nav .dropdown.open .mega-group a {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 9.33333333px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .navbar-nav .dropdown.open .mega-group .dropdown-menu li > a {
+    text-transform: none;
+    font-weight: normal;
+    padding-left: 14px;
+  }
+}
+.dropdown-menu {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  min-width: 200px;
+  border-radius: 0;
+  font-size: 14px;
+}
+.dropdown-menu > li > a {
+  color: #333333;
+  padding: 7px 28px;
+}
+.ie8 .dropdown-menu,
+.old-ie .dropdown-menu {
+  border: 1px solid #f2f2f2;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #3498db;
+}
+.dropdown-menu > li.open > a {
+  background: none;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  background: none;
+  color: #3498db;
+}
+.dropdown-header {
+  padding: 3px 20px;
+  font-size: 15px;
+}
+.dropdown-header a {
+  color: #999999;
+}
+.dropdown-submenu > a:after {
+  border-left-color: #333333;
+}
+.dropdown-submenu:hover > a:after {
+  border-left-color: #262626;
+}
+.nav > li > .separator {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  line-height: 28px;
+}
+@media (min-width: 992px) {
+  .nav > li > .separator {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+}
+@media (max-width: 991px) {
+  .nav > li > span {
+    padding: 10px 15px;
+    display: inline-block;
+  }
+}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background: none;
+}
+.nav-tabs > li {
+  margin-bottom: 0;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .nav-tabs > li {
+    margin-bottom: -1px;
+    width: auto;
+  }
+}
+.nav-tabs > li > a {
+  background: #f7f7f7;
+  border-radius: 0;
+}
+@media (min-width: 768px) {
+  .nav-tabs > li > a {
+    background: none;
+  }
+}
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:active,
+.nav-tabs > li > a:focus {
+  background: none;
+}
+.nav-tabs > li.open > a,
+.nav-tabs > li.open > a:hover,
+.nav-tabs > li.open > a:active,
+.nav-tabs > li.open > a:focus {
+  background: none;
+  border: 1px solid transparent;
+  color: #3498db;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background: #3498db;
+  border-color: #3498db;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    background: none;
+    border-color: #dddddd;
+    border-bottom-color: #ffffff;
+    color: #555555;
+  }
+}
+.nav-tabs > li.active.open > a,
+.nav-tabs > li.active.open > a:hover,
+.nav-tabs > li.active.open > a:focus {
+  background: #3498db;
+  border-color: #3498db;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  .nav-tabs > li.active.open > a,
+  .nav-tabs > li.active.open > a:hover,
+  .nav-tabs > li.active.open > a:focus {
+    background: none;
+    border-color: #dddddd;
+    border-bottom-color: #ffffff;
+    color: #555555;
+  }
+}
+.nav-pills > li > a {
+  border-radius: 0;
+  padding: 8px 20px;
+}
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+  background: none;
+}
+.nav-pills > li.open > a,
+.nav-pills > li.open > a:hover,
+.nav-pills > li.open > a:focus {
+  background: none;
+  color: #3498db;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active.open > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active.open > a:hover,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active.open > a:focus {
+  background: #3498db;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.nav-pills > li.active > a .caret,
+.nav-pills > li.active.open > a .caret,
+.nav-pills > li.active > a:hover .caret,
+.nav-pills > li.active.open > a:hover .caret,
+.nav-pills > li.active > a:focus .caret,
+.nav-pills > li.active.open > a:focus .caret {
+  border-top-color: #3498db;
+}
+.nav-pills > li .dropdown-menu {
+  border-color: #eeeeee;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 28px;
+  margin: 0;
+}
+.nav-pills > li .dropdown-menu > li > a:after {
+  margin-top: 10px;
+}
+.nav-pills > li .dropdown-menu > li > a:hover,
+.nav-pills > li .dropdown-menu > li > a:focus {
+  background: none;
+  color: #3498db;
+}
+.nav-pills > li .dropdown-menu > li > a:hover:after,
+.nav-pills > li .dropdown-menu > li > a:focus:after {
+  border-left-color: #3498db;
+}
+.nav-pills > li .dropdown-menu > li.open > a {
+  background: none;
+  color: #3498db;
+}
+.nav-pills > li .dropdown-menu > li.open > a:after {
+  border-left-color: #3498db;
+}
+.nav-pills > li .dropdown-menu > li.active.open > a,
+.nav-pills > li .dropdown-menu > li.active > a {
+  background: none;
+  color: #3498db;
+}
+.nav-pills > li > .dropdown-menu:before {
+  border-bottom: 10px solid #ddd;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: -10px;
+}
+.nav-pills > li > .dropdown-menu:after {
+  border-bottom: 9px solid #ffffff;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  content: "";
+  position: absolute;
+  left: 31px;
+  top: -9px;
+}
+.nav .caret {
+  border-top-color: #3498db;
+  border-bottom-color: #3498db;
+}
+.nav a:hover .caret {
+  border-top-color: #3498db;
+  border-bottom-color: #3498db;
+}
+.t3-navhelper {
+  background: #f5f5f5;
+  border-top: 1px solid #d9d9d9;
+  color: #555555;
+  padding: 5px 0;
+}
+.breadcrumb {
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+}
+.breadcrumb > li + li:before {
+  content: "/\00a0";
+}
+.breadcrumb > .active {
+  color: #999999;
+}
+.breadcrumb > .active + li:before {
+  content: "";
+  padding: 0;
+}
+.breadcrumb > .active .hasTooltip {
+  padding-right: 14px;
+}
+.breadcrumb .divider {
+  display: none;
+}
+.pagination > li > a,
+.pagination > li > span {
+  margin-bottom: 5px;
+}
+.pagination {
+  display: block;
+}
+.pagination:before,
+.pagination:after {
+  content: " ";
+  display: table;
+}
+.pagination:after {
+  clear: both;
+}
+@media screen and (min-width: 768px) {
+  .pagination {
+    float: left;
+  }
+}
+.pagination .pagination {
+  display: inline-block;
+}
+.counter {
+  display: block;
+  margin-bottom: 6px;
+  padding: 0;
+  background-color: #ffffff;
+  float: left;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .counter {
+    display: inline-block;
+    float: right;
+    margin-top: 28px;
+    padding: 6px 12px;
+    width: auto;
+  }
+}

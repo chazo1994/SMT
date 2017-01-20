@@ -1,0 +1,1 @@
+/**/skimlinksApplyHandlers({"country":"VN","ts":1484244171,"sessid":null,"csp":"captify:1484242719","guid":"b752e7715a256217ed9a56b197936ecb","merchant_domains":[]});
